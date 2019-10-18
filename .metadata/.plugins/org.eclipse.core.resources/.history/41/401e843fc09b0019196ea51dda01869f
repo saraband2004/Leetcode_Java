@@ -1,0 +1,132 @@
+import java.io.*; 
+import java.util.*; 
+
+
+class TreeNode{
+	public int val;
+	public TreeNode left;
+	public TreeNode right;
+	TreeNode(){
+		left=null;
+		right=null;
+		
+	}
+	
+}
+
+
+
+public class Solution {
+	public static TreeNode findSubtree(TreeNode root) {
+		
+		Stack<TreeNode> stack=new Stack<>();
+		TreeNode minnode;
+		int minsubtree;
+		int currentsubtree;
+		
+		stack.push(root);
+		
+		return root;	
+		
+    }
+	
+	
+	public static void InOrder(TreeNode root) {
+		if (root==null) {return;}
+		InOrder(root.left);
+		System.out.print(root.val);
+		InOrder(root.right);
+	}
+	
+	public static void InOrder2(TreeNode root) {
+		if (root==null) {return;}
+		Stack<TreeNode> stack=new Stack<>();
+		//stack.push(root);
+		TreeNode current;
+		current=root;
+		
+		while(!stack.empty() && current==null)
+		{
+			if(current!=null) {
+				stack.push(current);
+				current=current.left;
+			}
+			else {
+				current=stack.pop();
+				System.out.print(current.val);
+				current=current.right;
+			}
+			
+		}
+		
+		
+//		while(!stack.empty()) {
+//			if (current.left!=null) {
+//				//System.out.print("l");
+//				stack.push(current.left);
+//				current=current.left;
+//			}
+//			else {
+//				//System.out.print("r");
+//				current=stack.pop();
+//				System.out.print(current.val);
+//				current=stack.pop();
+//				current=current.right;
+//				stack.push(current);
+//			}
+//			
+//			
+//		}
+		
+		
+		
+	}
+	
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			//System.out.print("xxx");
+			TreeNode l1=new TreeNode ();
+			TreeNode l2=new TreeNode ();
+			TreeNode l3=new TreeNode ();
+			TreeNode l4=new TreeNode ();
+			TreeNode l5=new TreeNode ();
+			TreeNode l6=new TreeNode ();
+			TreeNode l7=new TreeNode ();
+			
+			l1.val=1;
+			l2.val=2;
+			l3.val=3;
+			l4.val=4;
+			l5.val=5;
+			l6.val=6;
+			l7.val=7;
+			
+			l1.left=l2;
+			l1.right=l3;
+			l2.left=l4;
+			l2.right=l5;
+			l3.left=l6;
+			l3.right=l7;
+			
+			InOrder(l1);
+			System.out.print("\n");
+			InOrder2(l1);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+	}
+
+}

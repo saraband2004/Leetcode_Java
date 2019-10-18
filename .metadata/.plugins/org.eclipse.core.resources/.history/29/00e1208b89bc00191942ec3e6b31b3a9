@@ -1,0 +1,55 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public static int nthUglyNumber(int n) {
+        int [] a = new int [Math.max(10,n)];
+        a[0] = 1;
+        a[1] = 2;
+        a[2] = 3;
+        a[3] = 4;
+        a[4] = 5;
+        a[5] = 6;
+        int min;
+        int index;
+        int temp;
+        for (int l=5; l<n; l++) {
+            min=Integer.MAX_VALUE;
+            index = l-1;
+            
+            while (index>=0){
+                if (a[index] * 2 > a[l-1]){ min = Math.min(min,   a[index] * 2);}
+                if (a[index] * 3 > a[l-1]){ min = Math.min(min,   a[index] * 3);}
+                if (a[index] * 5 > a[l-1]){ min = Math.min(min,   a[index] * 5);}
+                else {
+                    if(a[index] * 5 > 0){break;}
+                    
+                }
+                index--;
+            }
+            a[l] = min; System.out.println((l+1) + ": " + (min));
+            
+        }
+        return a[n-1];
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print("aaa");
+		Deque <Integer> q = new LinkedList<>();
+		q.offer(1);
+		q.offer(2);
+		q.offer(3);
+		
+		System.out.println(q);
+		nthUglyNumber(100);
+		
+		int [] arr = {1,2,3,5,6,7,8,9,9,10};
+		System.out.println(Arrays.binarySearch(arr, 12));
+		
+		
+		
+	}
+
+}

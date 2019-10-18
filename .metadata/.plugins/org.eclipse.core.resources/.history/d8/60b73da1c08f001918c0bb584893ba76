@@ -1,0 +1,47 @@
+class Human{
+	
+}
+
+class HomoSapien extends Human{
+	
+	
+}
+
+
+class Vehicle{
+	
+}
+
+class Speed{ int u; 
+
+
+}
+
+
+
+
+
+class Sedan extends Vehicle{
+	private Speed sp;
+	int t;
+	Sedan(int x){    t=x;      }
+}
+
+
+
+public class MYMAIN {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Human X=new Human();
+		HomoSapien Y=new HomoSapien();
+		System.out.println(X instanceof Human);
+		System.out.println(Y instanceof Human);
+		System.out.println(X instanceof HomoSapien);
+		System.out.println(Y instanceof HomoSapien);
+		
+		
+		Sedan Accord=new Sedan(80);
+	}
+
+}

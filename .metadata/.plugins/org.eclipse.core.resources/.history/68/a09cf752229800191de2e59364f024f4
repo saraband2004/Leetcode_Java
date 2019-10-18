@@ -1,0 +1,22 @@
+
+public class Solution {
+	public static int[] twoSum(int[] nums, int target) {
+			
+		int[]ans= int[2];
+		int[]ans = {0,1};
+		
+		
+		return ans;
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+			int[]nums = {1,2,3,4};
+			int[]ans = twoSum(nums,3);
+			System.out.print("x");
+	}
+
+}

@@ -1,0 +1,18 @@
+public class Puppy2 {
+
+   public static void main(String []args) {
+      /* Object creation */
+      Puppy myPuppy = new Puppy( "toxxxxmmy" );
+
+      /* Call class method to set puppy's age */
+      System.out.print('x\n');
+      
+      myPuppy.setAge( 5 );
+
+      /* Call another class method to get puppy's age */
+      myPuppy.getAge( );
+
+      /* You can access instance variable as follows as well */
+      System.out.println("Variable Value :" + myPuppy.puppyAge );
+   }
+}

@@ -1,0 +1,65 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+
+
+
+
+class Codec {
+    public String seriInt(int x){
+    	String res = new String();
+    	res += (char)(x & 255);
+    	x>>>=8;
+    	res += (char)(x & 255);
+    	x>>>=8;
+    	res += (char)(x & 255);
+    	x>>>=8;
+    	res += (char)(x & 255);
+    	return res;
+    }
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        if (root == null){return "#,";}
+        String R = seriInt(root.val) + ",";
+        
+        R += serialize(root.left);
+        R += serialize(root.right);
+        
+        return R;
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        return null;
+    }
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.deserialize(codec.serialize(root));
+
+public class Solution {
+
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Solution s = new Solution();
+		System.out.println(s.seriInt(123421421));
+		
+		
+		
+	}   
+	
+ 
+
+}

@@ -1,0 +1,70 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	public static void function(String s) {
+		s=s+"aaa";		
+	}
+	
+	public static boolean isMatch(String s, String p) {
+        // write your code here
+    }
+	
+	public static boolean isMatchII(String s, String p, int ids, int idp) {
+        // write your code here
+		if (ids==s.length() ) {
+			if (idp != p.length()) {
+				if (p.charAt(idp) == '*') {
+					return isMatchII(s,p,ids, idp+1);
+				}
+				else {
+					return false;
+				}
+				
+			}
+		}
+		if (idp==p.length() ) {
+			
+		}
+		
+		
+		
+		if (s.charAt(ids)!='?' && s.charAt(ids)!='*') {
+			if (s.charAt(ids) == p.charAt(idp)) {
+				return isMatchII(s,p,ids+1,idp+1);
+			}else {
+				return false;
+			}
+			
+			
+		}
+		
+		
+		
+    }
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print(true);
+		
+		
+		String u="bbb";
+		
+		System.out.println(u);
+		
+		function(u);
+		
+		System.out.println(u);
+		
+		
+		
+		
+		
+	}
+
+}

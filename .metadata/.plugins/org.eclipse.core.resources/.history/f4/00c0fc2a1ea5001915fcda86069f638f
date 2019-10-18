@@ -1,0 +1,51 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	//Given an integer array, sort it in ascending order in place. Use quick sort, merge sort, heap sort or any O(nlogn) algorithm.
+	public static void sortIntegers2(int[] A) {
+        // write your code here
+		
+		quickSort(A, 0, A.length-1);
+    }
+	
+	public static void quickSort(int[] A, int left, int right) {
+		int mid;
+		mid=(left+right)/2;
+		int pivot=A[mid];
+		int temp;
+		
+		while (left < right && left<A.length && right>=0) {
+			System.out.println("t");
+			while (A[left]<=pivot) {
+				left++;
+				if (left==A.length) {break;}
+			}
+			System.out.println("s");
+			while (A[right]>=pivot) {
+				right--;
+			}
+			if (right <= left) {break;}
+			temp=A[left];
+			A[left]=A[right];
+			A[right]=temp;
+			left++;
+			right--;
+			
+		}
+		quickSort(A, left, mid);
+		quickSort(A, mid, right);
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print("aaa");
+		int [] A= {1,2,3,1,2,3};
+		sortIntegers2(A);
+	}
+
+}

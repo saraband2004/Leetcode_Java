@@ -1,0 +1,38 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	enum Color 
+	{ 
+	     RED, GREEN, BLUE; 
+	} 
+	public static void function(Color x) {
+		
+		if (x==Color.BLUE) {System.out.println("blUe!");}
+		if (x==Color.RED) {System.out.println("rEd!");}
+		if (x==Color.GREEN) {System.out.println("gReen!");}
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		String s="aaaaaaaaaa";
+		StringBuilder str=new StringBuilder(s);
+		str.append("abdc"); 
+		str.setCharAt(5, 'x');
+		System.out.println(str);
+		
+		
+		
+		Color c1 = Color.RED;
+		c1=Color.GREEN;
+		System.out.println(c1);
+		
+		c1=Color.valueOf("RED");
+		
+	}
+
+}

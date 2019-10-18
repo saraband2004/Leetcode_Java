@@ -1,0 +1,38 @@
+
+public class Solution {
+
+	
+	int[] swap(int x, int y) {
+		int []ans=new int[2];
+		ans[0]=y;
+		ans[1]=x;
+		
+	}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			int x;
+			int y;
+			x= 2147483647;
+			y= 1147483647;
+			
+			x=x+y;
+			y=x-y;
+			x=x-y;
+			
+			System.out.println(x);
+			System.out.println(y);
+			System.out.println(x*y);
+			/*
+			int i=0;
+			while( i < 10 ) {
+				System.out.println(x+i);
+				i++;
+			}*/
+			
+	}
+
+}

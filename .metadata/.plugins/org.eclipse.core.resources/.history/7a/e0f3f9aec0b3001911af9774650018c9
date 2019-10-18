@@ -1,0 +1,65 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public static String reverseWords(String s) {
+    	StringBuilder t=new StringBuilder();
+    	char[]c=s.toCharArray();
+    	int index=0;
+    	boolean space=true;
+    	
+    	while (index < c.length) {
+    		if (c[index] != ' ') {
+    			t.append(c[index]);
+    			space=false;
+    		}
+    		else {
+    			if (space==false) {
+    				t.append(c[index]);
+    				space=true;
+    			}
+    		}
+    		index++;
+    	}
+    	
+    	System.out.print(t);
+    	
+    	
+    	if (t.charAt(t.length()-1)==' ') {
+    		t.deleteCharAt(t.length()-1);
+    	}
+    	
+    	System.out.print(t);
+    	System.out.print(t);
+    	
+    	index=-1;
+    	int start;
+    	int end;	
+    	
+    	t.reverse();
+    	System.out.print(t);
+//    	while (index<t.length()) {
+//    		
+//    		if (index==-1 || t.charAt(index)== ' ') {
+//    			
+//    		}
+//    		
+//    		
+//    		
+//    	}
+    	
+    	
+    	
+    	
+    	return s;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+		reverseWords("aaa    bbb ccc ddd    ");
+	}
+
+}

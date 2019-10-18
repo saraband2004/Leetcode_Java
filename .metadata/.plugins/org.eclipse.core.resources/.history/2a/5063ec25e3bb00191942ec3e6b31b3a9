@@ -1,0 +1,65 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public boolean connect(String s, String t) {
+    	return true;
+    }
+	
+	public int minDistance(String word1, String word2) {
+        StringBuilder W1=new StringBuilder(word1);
+        StringBuilder W2=new StringBuilder(word2);
+        return MIND(W1, W2);
+    }
+	public List<StringBuilder> strlist(StringBuilder word){
+		ArrayList<StringBuilder> list =new ArrayList<>();
+		StringBuilder temp;
+		for (int i=0; i < word.length(); i++) {
+			temp=new StringBuilder(word);
+			temp.deleteCharAt(i);
+			list.add(temp);
+		}
+		for (int i=0; i < word.length(); i++) {
+			for (char a='a'; a<='z'; a++) {
+				temp=new StringBuilder(word);
+				temp.setCharAt(i, a);
+				list.add(temp);
+			}
+		}
+		return list;
+	}
+	
+	
+    public int MIND(StringBuilder W1, StringBuilder W2) {
+    	
+    	
+    	
+    }
+    
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print("aaab");
+		StringBuilder str1 =new StringBuilder("aaab");
+		StringBuilder str2 =new StringBuilder("aaab");
+		HashSet<StringBuilder> set= new HashSet<>();
+		set.add(str1);
+		System.out.println(set.size());
+		set.add(str2);
+		System.out.println(set.size()+"x");
+		
+		System.out.println(str1.compareTo(str2));
+		
+		str2=str1.deleteCharAt(3);
+		
+		System.out.println(str1);
+		System.out.println(str2);
+		
+		
+		
+		
+	}	
+
+}

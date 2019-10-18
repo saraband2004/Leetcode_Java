@@ -1,0 +1,19 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public String removeKdigits(String num, int k) {
+    	StringBuilder sb = new StringBuilder(num);
+    	System.out.println(sb);
+    	return num;
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		String num = "Hello JAVA";
+		System.out.println(new Solution().removeKdigits(num, 5));
+	}
+
+}

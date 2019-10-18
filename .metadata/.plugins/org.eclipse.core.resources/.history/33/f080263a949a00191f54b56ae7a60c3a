@@ -1,0 +1,81 @@
+
+class TreeNode {
+     public int val;
+     public TreeNode left, right;
+     public TreeNode(int val) {
+         this.val = val;
+         this.left = this.right = null;
+     }
+}
+
+class resulttype{
+	public int minvalue;
+	public TreeNode minnode;
+	public int currentvalue;
+	public TreeNode currentnode;
+}
+
+
+
+
+public class Solution {
+	public static TreeNode findSubtree(TreeNode root) {
+        // write your code here
+				
+		
+		return root;
+		
+    }
+	
+	public static resulttype findSubtreeaux(resulttype Result) {
+        // write your code here
+		//if (root == null) {return 0;}
+		TreeNode node=Result.currentnode;
+		TreeNode left=node.left;
+		TreeNode right=node.right;
+		resulttype ResultNew = new resultype();
+		resulttype ResultLeft = new resultype();
+		resulttype ResultRight = new resultype();
+		ResultLeft.currentnode=left;
+		ResultRight.currentnode=right;
+		if (left == null && right == null) {
+			ResultNew.currentnode=Result.currentnode;
+			ResultNew.minnode=Result.currentnode;
+			ResultNew.currentvalue=Result.currentnode.val;
+			ResultNew.minvalue=Result.currentnode.val;
+		}
+		else if (left != null && right != null) {
+			ResultNew.currentvalue=node.val + findSubtreeaux(ResultLeft) + findSubtreeaux(ResultRight);
+			ResultNew.currentnode=node;
+			//if ()
+			
+			
+		}
+		
+		
+		
+		
+		return ResultNew;
+		
+		
+    }
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			System.out.print("xxx");
+			TreeNode root = new TreeNode(3);
+			TreeNode l1 = new TreeNode(1);
+			TreeNode l2 = new TreeNode(3);
+			root.left=l1;
+			root.right=l2;
+			findSubtree(root);
+			int a;
+			System.out.println(a=5);
+			
+	}
+
+}

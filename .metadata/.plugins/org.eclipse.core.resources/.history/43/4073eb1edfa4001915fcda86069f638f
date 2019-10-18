@@ -1,0 +1,60 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	public static boolean searchMatrix(int[][] matrix, int target) {
+     
+		return false;
+    }
+	
+	public static boolean searchMatrixII(int[][] matrix, int target, int xstart, int xend, int ystart, int yend) {
+	    int xmid;
+	    int ymid;
+	    xmid=(xstart+xend+1)/2;
+	    ymid=(ystart+yend+1)/2;
+	    if (matrix[xmid][ymid] ==  target) {
+	    	return true;
+	    }
+	    xmid=(xstart+xend)/2;
+	    ymid=(ystart+yend)/2;
+	    if (matrix[xmid][ymid] ==  target) {
+	    	return true;
+	    }
+	    if (matrix[xmid][ymid] > target) {
+	    	if (
+	    	searchMatrixII(matrix, target, xstart, xmid, ystart, ymid) ||
+	    	searchMatrixII(matrix, target, xmid, xend, ystart, ymid)
+	    	||searchMatrixII(matrix, target, xstart, xmid, ymid, yend)
+	    	) {
+	    		return true;
+	    	}
+	    	
+	    }
+	    if (matrix[xmid][ymid] < target) {
+	    	if (
+	    	searchMatrixII(matrix, target, xmid, xend, ymid, yend) ||
+	    	searchMatrixII(matrix, target, xmid, xend, ystart, ymid)
+	    	||searchMatrixII(matrix, target, xstart, xmid, ymid, yend)
+	    	) {
+	    		return true;
+	    	}
+	    	
+	    }
+	    return false;
+	    
+    }
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Good Afternoon!");
+		
+	
+	}
+
+}

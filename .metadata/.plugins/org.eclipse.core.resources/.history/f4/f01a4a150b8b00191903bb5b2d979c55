@@ -1,0 +1,16 @@
+public class Puppy2 {
+   int puppyAge;
+
+
+
+   public void setAge( int age ) {
+      puppyAge = age;
+   }
+
+   public int getAge( ) {
+      System.out.println("Puppy's age is :" + puppyAge );
+      return puppyAge;
+   }
+
+
+}

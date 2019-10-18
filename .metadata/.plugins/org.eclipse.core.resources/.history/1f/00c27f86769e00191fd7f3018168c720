@@ -1,0 +1,89 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	public static void function(String s) {
+		s=s+"aaa";		
+	}
+	
+	public static boolean isMatch(String s, String p) {
+        // write your code here
+		int[][]Matrix=new boolean[s.length()][p.length()];
+		int i=0;int j;
+		while( i < s.length() ) {
+			j=0;
+			while (j < p.length()) {
+				Matrix[i][j]=0;
+				
+				
+			}
+			
+			i++;
+		}
+		
+		
+		return isMatchII(s,p,0,0);
+    }
+	public int [][] Matrix;
+	
+	
+	public static boolean isMatchII(String s, String p, int ids, int idp) {
+        // write your code here
+		if (ids==s.length() ) {
+			if (idp != p.length()) {
+				if (p.charAt(idp) == '*') {
+					return isMatchII(s,p,ids, idp+1);
+				}
+				else {
+					return false;
+				}
+				
+			}
+			else {return true;}
+		}
+		else if (idp==p.length() ) {
+			return false;
+		}
+		
+		
+		
+		if (p.charAt(idp)!='?' && p.charAt(idp)!='*') {
+			if (s.charAt(ids) == p.charAt(idp)) {
+				return isMatchII(s,p,ids+1,idp+1);
+			}else {
+				return false;
+			}
+			
+			
+		}else if (p.charAt(idp) == '?') {
+			return isMatchII(s,p,ids+1,idp+1);
+		}else if (p.charAt(idp) == '*') {
+			if (isMatchII(s,p,ids+1,idp)) {return true;}
+			else if (isMatchII(s,p,ids,idp+1)) {return true;}
+			return false;
+		}
+		return false;
+		
+		
+    }
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print(true);
+		
+		
+//		String s="abbbaaababbaaabaaabbbabbbbaaabbaaababaabbbbbbaababbabababbababaaabbbbbabababaababaaaaaaabbbaabaabbbaabbabaababbabaababbbabbaaabbbaaaababbaaabbaabaabbbbbaaababaabaabaaabbabaabbbabbbaabbababaabbbbbbbbaaa";
+//		String p="*ba***bba*b**abbaa***a*****b*a*bb*b***a*bbb***a***bba*****a****a*a*b**aaaba*aab*a*aa***a*a*b**b**a*b*";
+		String s="asdfjlkjkljklasdjfkladsjfkljklasddafkdasjlfjasdklfjklajklfjdlajf";
+		String p="asd*ljkl*ad**klj***daf*s**jl*f*****kl*j******a*******jdlajf";
+		System.out.print(isMatch(s,p));
+		
+		
+	}
+
+}

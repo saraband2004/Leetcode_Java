@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Leetcode Template16&apos; to &apos;binaryTreePaths&apos;" description="Rename resource &apos;Leetcode Template16&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Leetcode Template16" name="binaryTreePaths" stamp="1561861984137" updateReferences="true"/>
+</session>

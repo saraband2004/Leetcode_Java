@@ -1,0 +1,7 @@
+
+public class Tlass {
+
+	   public static void methodx(String []args) {
+		      System.out.println("Hello World"); // prints Hello World
+	   }
+}

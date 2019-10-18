@@ -1,0 +1,67 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+class TreeNode {
+     int val;
+     TreeNode left;
+     TreeNode right;
+     TreeNode(int x) { val = x; }
+}
+ 
+
+
+class Codec {
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        
+        Queue<TreeNode> q=new LinkedList<>();
+        q.offer(root);
+        TreeNode p;
+        String result=new String();
+        boolean status=true;
+        while (!q.isEmpty()){
+            p = q.poll();
+            if (p == null ){
+                if (status) {
+                    result = result+"#";
+                    status=false;
+                }
+                else {
+                	result = result+",#";
+                }
+            }
+            else {
+                if (status) {
+                	result = result+Integer.toString(p.val);
+                    status=false;
+                }
+                else {
+                	result = result+","+Integer.toString(p.val);
+                }
+                q.offer(p.left);
+                q.offer(p.right);
+            }
+        }
+        
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        
+    }
+}
+
+public class Solution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print("aaa");
+		Codec C=new Codec();
+		TreeNode L1 = new TreeNode(1);
+
+	}
+
+}

@@ -1,0 +1,68 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public int numSquares(int n) {
+        int i = 1;
+        ArrayList <Integer> list = new ArrayList<>();
+        while ( i*i <= n ) {
+            list.add( i*i );
+            i++;
+        }
+        int [] result = new int [n+1];
+        
+        return NUMSQ2(n,list, list.size()-1 , result, n);
+        
+        
+    }
+    
+    public int NUMSQ2(int n, ArrayList<Integer> list, int index, int[]result, int tempmin){
+        if ( n == 0 ){ return 0; }
+        if ( result [n] != 0 ) {    return result [n];  }
+        
+        if (tempmin == 0 )return n;
+        
+        int min=tempmin;
+        int i = index;
+        while ( i>=0 ){
+            if (n - list.get(i)>=0) {min = Math.min(NUMSQ2(n - list.get(i), list, list.size()-1, result, min-1) + 1, min);}
+            i--;
+        }
+        result[n] = min;
+        return min;
+    }
+    
+    
+    
+    public int NUMSQ(int n, ArrayList<Integer> list, int index, int[]result){
+        if ( n == 0 ){ return 0; }
+        if ( result [n] != 0 ) {    return result [n];  }
+        int min=n;
+        int i = index;
+        while ( i>=0 ){
+            if (n - list.get(i)>=0) {min = Math.min(NUMSQ(n - list.get(i), list, list.size()-1, result), min);}
+            i--;
+        }
+        result[n] = min+1;
+        return min+1;
+    }
+    
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		Solution S=new Solution();
+		int max=0;
+		int temp;
+		for (int i=1; i<400; i++) {
+			temp=S.numSquares(i);
+			System.out.println(i+": "+temp);
+			max=Math.max(temp, max);
+		}
+		System.out.println("max: "+max);
+
+	}
+
+}

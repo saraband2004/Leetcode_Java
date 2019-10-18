@@ -1,0 +1,75 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public boolean isMatch(String s, String p) {
+        
+        int N = Math.max(s.length(), p.length());
+        
+        HashMap<Integer, boolean> MAP = new HashMap<>();
+        
+        
+        
+        return ISMATCH(s.toCharArray(), p.toCharArray(), 0, 0, MAP, N)    ;
+    }
+    
+    public boolean ischar(char x){
+        if (x >= 'a'){ 
+            if (x <= 'z') {return true;}
+        }
+        return false;
+    }
+    
+    
+    
+    
+    public boolean ISMATCH(char[]s, char[]p, int indexs, int indexp, HashMap<Integer, boolean> MAP, int N){
+        boolean test=false;
+        if (MAP.containsKey(indexs + indexp*N)){
+            return  MAP.get(indexs + indexp*N);
+        }
+        
+        if (indexp == p.length){
+            return indexs == s.length;
+        }
+        
+        else if (ischar(p[indexp])){
+            if (indexs == s.length){ test = false; }
+            else if (s[indexs] == p[indexp]) {
+                test|=ISMATCH(s,p,indexs+1,indexp+1,MAP,N);
+            }
+        }
+        
+        else if (p[indexp] == '?'){
+            if (indexs == s.length){ test = false; }
+            else {  test|=ISMATCH(s,p,indexs+1,indexp+1,MAP,N);   }
+            
+        }
+        
+        
+        else if (p[indexp] == '*'){
+            
+            for (int i=indexs; i<=s.length; i++){
+                
+                test|=ISMATCH(s,p,i,indexp+1,MAP,N);
+                
+                if (test) {break;}
+                
+            }
+            
+        }
+        
+        
+        MAP.put(indexs+indexp*N, test);
+        return test; 
+        
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print("aaa");
+
+	}
+
+}

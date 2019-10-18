@@ -1,0 +1,67 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+ public class TreeNode {
+     int val;
+     TreeNode left;
+     TreeNode right;
+     TreeNode(int x) { val = x; }
+ }
+
+public class Solution {
+	
+    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        
+        
+        
+        Stack<List<Integer>> stack=new Stack<>();
+        List<List<Integer>> result=new LinkedList<>();
+        Queue<TreeNode> q=new LinkedList<>();
+        
+        if (root == null) {return result;}
+        List<Integer> templist;
+        
+        
+        q.offer(root);
+        int size;
+        TreeNode x;
+        
+        while ( !q.isEmpty() ) {
+            size=q.size();
+            templist=new LinkedList<>();
+            for (int i=0; i<size; i++) {
+                x=q.poll();    
+                if (x.left!=null) { q.offer(x.left); }
+                if (x.right != null) { q.offer(x.right);}
+                templist.add(x.val);
+            }
+            
+            stack.push(templist);
+            
+        }
+        
+        while (!stack.empty()) {
+            
+            result.add(stack.pop());
+            
+            
+        }
+        
+        return result;
+        
+        
+    }
+    
+    
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int A=0b1111111;
+		
+		System.out.print(A);
+
+	}
+
+}

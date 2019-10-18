@@ -1,0 +1,108 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+class Node{
+	public int[]size;
+	public List<Integer> contains;
+	public List<Integer> contained;
+	public Node(int[]x) {
+		size=x;
+		contains=new LinkedList<>();
+		contained=new LinkedList<>();
+	}
+}
+
+
+public class Solution {
+	//public HashMap<Node, Integer> map;
+    public int maxEnvelopes(int[][] envelopes) {
+    	if (envelopes.length == 0) {return 0;}
+    	Node [] tree = new Node[envelopes.length];
+    	
+    	//map=new HashMap<>();
+    	for (int i=0; i<envelopes.length; i++ ) {
+    		tree[i] = new Node(envelopes[i]);
+    		//map.put(tree[i],i);
+    	}
+    	System.out.println("start");
+    	
+    	long start = System.currentTimeMillis();    
+    	
+    	
+    	
+    	for (int i=0; i<envelopes.length; i++ ) {
+    		for (int j=0; j<envelopes.length; j++ ) {
+    			if (smaller(tree[i].size, tree[j].size)) {
+    				tree[j].contains.add(i);
+    				tree[i].contained.add(j);
+    			}
+    		}
+    	}
+    	int N = envelopes.length;
+    	int MAX =0;
+    	int [] result = new int[N];
+    	System.out.println("start");
+    	
+    	
+    	long end;
+    	end = System.currentTimeMillis() ;
+    	System.out.println(((double ) (end - start))/1000);
+    	start = System.currentTimeMillis();
+    	for (int i = 0 ; i<N; i++) {
+    		if (tree[i].contained.size()==0) {
+    			MAX = Math.max(MAX, DFS(i, tree, result));
+    		}
+    	}
+    	
+    	end = System.currentTimeMillis() ;
+    	System.out.println(((double ) (end - start))/1000);
+    	
+    	return MAX;
+    	
+    }
+    public int DFS(int i, Node[]tree, int[] result) {
+    	if (result[i]!=0) {return result[i];}
+    	if (tree[i].contains.size()==0) {
+    		result[i] = 1;
+    		return 1;
+    	}
+    	int MAX=0;
+    	for (int t: tree[i].contains) {
+    		MAX = Math.max(MAX, DFS(t, tree, result));
+    	}
+    	result[i] = MAX+1;
+    	return MAX+1;
+    	
+    	//return 0;
+    }
+    
+    
+    public boolean smaller(int [] a, int [] b) {
+    	if (a[0]<b[0] && a[1]<b[1]) {return true;}
+    	return false;
+    }
+    
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    	int N=12000;
+    	int [][] enve = new int[N][2];
+    	Random rand = new Random();
+    	//int n = rand.nextInt(Integer.MAX_VALUE);
+    	
+    	for (int i=0; i<N; i++) {
+    		enve[i][0]=rand.nextInt(Integer.MAX_VALUE);
+    		enve[i][1]=rand.nextInt(Integer.MAX_VALUE);
+    	}
+    	System.out.println("start");
+    	Solution S=new Solution();
+    	System.out.println(S.maxEnvelopes(enve));
+    	
+  
+    	
+		
+	}   
+     
+
+}
+
+ 

@@ -1,0 +1,17 @@
+class mod{
+	public int value;
+}
+
+
+public class Solution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			System.out.print("xxx");
+	}
+	
+	mod x = new mod ();
+	x.value=1;
+	
+	
+}

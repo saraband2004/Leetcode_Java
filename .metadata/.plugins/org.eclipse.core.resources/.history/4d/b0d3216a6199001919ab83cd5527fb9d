@@ -1,0 +1,59 @@
+import java.util.*;
+
+public class Solution {
+	
+	public static void Prime() {
+		ArrayList<Integer> primes=new ArrayList<>();
+		int count;
+		int n=2;
+		while( n < 1024*1024*2 ) {
+			count=0;
+			for (int p: primes) {
+				if (n % p ==0 ) {
+					count++;
+					break;
+					
+				}			
+				
+			}
+			if (count == 0) {
+				primes.add(n);
+				//System.out.println(n);
+			}
+			n++;
+			
+			
+		}
+		
+		
+	}
+	
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//	System.out.print("xxx");
+		//	Prime();
+			System.out.println("finished");
+			
+			HashMap<Integer, Integer> map=new HashMap<>();
+			map.put(2,200);
+			map.put (2,300);
+			map.remove(2,300);
+			System.out.println(map.get(2));
+			
+			HashSet<Integer> set=new HashSet<>();
+			set.add(1234);
+			set.add(1234);
+			
+			System.out.println(set.contains(1234));
+			
+			
+			
+			
+			
+			
+	}
+
+}

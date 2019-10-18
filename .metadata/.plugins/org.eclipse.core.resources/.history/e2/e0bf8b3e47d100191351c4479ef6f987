@@ -1,0 +1,135 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+
+
+
+
+class Codec {
+    public String seriInt(int x){
+    	String res = new String();
+    	res += (char)(x & 255);
+    	x>>>=8;
+    	res += (char)(x & 255);
+    	x>>>=8;
+    	res += (char)(x & 255);
+    	x>>>=8;
+    	res += (char)(x & 255);
+    	return res;
+    }
+    public int deseriInt(String s) {
+    	char[]c=s.toCharArray();
+    	int result = 0;
+    	result += (int)c[0];
+    	result += ((int)c[1])<<8;
+    	result += ((int)c[2])<<16;
+    	result += ((int)c[3])<<24;
+    	return result;
+    }
+    
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        if (root == null){return "#,";}
+        String R = seriInt(root.val) + ",";
+        
+        R += serialize(root.left);
+        R += serialize(root.right);
+        
+        return R;
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+    	int left = 0;
+    	int right = left+1;
+    	ArrayList<String> list = new ArrayList<>();
+    	while (right < data.length()) {
+    		if (data.charAt(right) == ',') {
+    			list.add(data.substring(left, right));
+    			left = right+1;
+    			right++;
+    		}
+    		else {right++;}
+    	}
+    	
+        return maketree(list, 0, list.size()-1);
+    }
+    public TreeNode maketree(ArrayList<String> list, int left, int right) {
+    	if (left == right) {
+    		if (list.get(left).compareTo("#")==0) {return null;}
+    		TreeNode root = new TreeNode(deseriInt(list.get(left)));
+    		return root;
+    	}
+    	TreeNode root = new TreeNode(deseriInt(list.get(left)));
+    	int count = 0;
+    	int i = left+1;
+    	if (i > right) {return root;}
+    	while (i <= right) {
+    		if (list.get(i).compareTo("#") == 0) {
+    			count ++;
+    		}
+    		else {count --;}
+    		
+    		if (count == 1) {break;}
+    		i++;
+    	}
+    	root.left=maketree(list,left+1, i);
+    	root.right=maketree(list,i+1, right);
+    	
+		return root;
+    }
+    
+    
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.deserialize(codec.serialize(root));
+
+public class Solution {
+
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Codec s = new Codec();
+		System.out.println(s.deseriInt(s.seriInt(-1124132412)));
+		
+		
+		TreeNode root = new TreeNode (-1);
+		TreeNode p = root;
+		for (int i = 2; i<100; i++) {
+			p.right = new TreeNode (i);
+			p=p.right;
+		}
+		
+		
+		String str = s.serialize(root);
+		System.out.println(str);
+		s.deserialize(str);
+		str = s.serialize(root);
+		System.out.println(str);
+		
+		
+		TreeNode L2 = new TreeNode (112);
+		TreeNode L3 = new TreeNode (113);
+		TreeNode L4 = new TreeNode (114);
+		root.right=L2;
+		L2.right=L3;
+		L3.right=L4;
+		
+		
+	}   
+	
+ 
+
+}

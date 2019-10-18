@@ -1,0 +1,126 @@
+import java.util.*;
+
+class UndirectedGraphNode {
+    public int val;
+    public List<UndirectedGraphNode> neighbors;
+    public UndirectedGraphNode() {}
+    public UndirectedGraphNode(int _val,List<UndirectedGraphNode> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+};
+
+
+public class Solution {
+	
+	
+	public static UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+	        
+	        UndirectedGraphNode nodenew=new UndirectedGraphNode();
+	        
+	        HashMap<Integer, UndirectedGraphNode> map=new HashMap<>();
+	        HashMap<Integer, UndirectedGraphNode> mapnew=new HashMap<>();
+	        Queue<UndirectedGraphNode> kueue=new LinkedList<>();
+	        
+	        nodenew.val=node.val;
+	        nodenew.neighbors=new LinkedList<UndirectedGraphNode>();
+	        //System.out.println(nodenew.neighbors.isEmpty()+"xxxx");
+	        kueue.offer(nodenew);
+	        
+	        UndirectedGraphNode x;
+	        map.put(node.val, node);
+	        mapnew.put(nodenew.val, nodenew);
+	        int y;
+	        
+	        while( !kueue.isEmpty() ) {
+	        	x=kueue.poll(); 																//System.out.println("x");
+	        	
+	        	List<UndirectedGraphNode> templist=new LinkedList<>();
+	        	templist=map.get(x.val).neighbors;		
+	        	for (UndirectedGraphNode neigh: templist ) {
+	        		if (!map.containsKey(neigh.val)) {
+	        			
+	        			UndirectedGraphNode l=new UndirectedGraphNode();
+		        		l.val=neigh.val;
+		        		l.neighbors=new LinkedList<UndirectedGraphNode>();
+		        		kueue.offer(l);
+		        		map.put(neigh.val,neigh);
+		        		mapnew.put(l.val, l);
+		        			        			
+	        		}
+	        		
+	        		//System.out.println(mapnew.containsKey (neigh.val)+" x.neighbors is empty: "+x.neighbors.isEmpty());
+	        		x.neighbors.add ( mapnew.get(neigh.val) );
+	        		
+	        	}      	
+	        	
+	        }
+	        
+	        
+	        
+	        
+	        return nodenew;
+	    }
+
+	public static void main(String[] args) {
+		//
+		UndirectedGraphNode n1=new UndirectedGraphNode();
+		UndirectedGraphNode n2=new UndirectedGraphNode();
+		UndirectedGraphNode n3=new UndirectedGraphNode();
+		UndirectedGraphNode n4=new UndirectedGraphNode();
+		n1.val=1;
+		n2.val=2;
+		n3.val=3;
+		n4.val=4;
+		n1.neighbors=new LinkedList<UndirectedGraphNode>();
+		n2.neighbors=new LinkedList<UndirectedGraphNode>();
+		n3.neighbors=new LinkedList<UndirectedGraphNode>();
+		n4.neighbors=new LinkedList<UndirectedGraphNode>();
+		
+		
+		n1.neighbors.add(n2);
+		n2.neighbors.add(n1);
+			
+		n1.neighbors.add(n3);
+		n3.neighbors.add(n1);
+		
+		n2.neighbors.add(n3);
+		n3.neighbors.add(n2);
+		
+		n2.neighbors.add(n4);
+		n4.neighbors.add(n2);
+	
+		n3.neighbors.add(n4);
+		n4.neighbors.add(n3);
+		
+		
+		
+		HashMap<Integer, UndirectedGraphNode> map=new HashMap<>();
+		map.put( 1,n1 );
+		map.put( 2,n2 );
+		map.put( 3,n3 );
+		
+		
+		//System.out.println(n1.neighbors.contains(n2));
+		
+		Queue<UndirectedGraphNode> list=new LinkedList<>();
+		list.offer(n1);
+		list.offer(n2);
+		list.offer(n3);
+		list.offer(n4);
+		
+		//System.out.println(list.peek().val);
+		
+		
+		UndirectedGraphNode N1=new UndirectedGraphNode();
+		N1=cloneGraph(n1);
+		UndirectedGraphNode N2,N3,N4;
+		N2=N1.neighbors.get(0);
+		System.out.print(N2.val);
+		N3=N1.neighbors.get(1);
+		System.out.print(N3.val);
+		
+			
+	}
+
+}

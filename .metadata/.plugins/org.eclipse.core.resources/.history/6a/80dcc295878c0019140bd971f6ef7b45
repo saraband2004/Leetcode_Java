@@ -1,0 +1,33 @@
+class Outer {
+   int num;
+   
+   public class Inner{
+      void innerfunction() {
+		   		
+		   System.out.println("innerfunction");
+		   
+	   }
+	   
+    }
+   
+   void outerfunction() {
+	   Inner x=new Inner();
+	   x.innerfunction();   
+	   
+   }
+   
+
+}
+   
+public class Myclass {
+
+   public static void main(String args[]) {
+      // Instantiating the outer class 
+      Outer ox = new Outer();
+      
+      // Accessing the display_Inner() method.
+      
+     
+      
+   }
+}

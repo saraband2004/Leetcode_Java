@@ -1,0 +1,56 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+    	LinkedList<Integer> temp= new LinkedList<>();
+    	List<List<Integer>> result = new LinkedList<>();
+    	boolean[]status = new boolean[nums.length];
+    	DFS(nums, status, temp, result);
+    	return result;
+    }
+    public void DFS(int[]nums, boolean[]status, LinkedList<Integer> temp, List<List<Integer>> result) {
+    	if (temp.size() == nums.length) {
+    		result.add(new ArrayList<>(temp));
+    		System.out.println(temp);
+    		return;
+    	}
+    	
+    	for (int i = 0; i<nums.length; i++ ) {
+    		if (status[i] == true) continue;
+    		status[i] = true;
+    		temp.add(nums[i]);
+    		DFS(nums, status, temp, result);
+    		temp.removeLast();
+    		status[i] = false;
+    	}
+    }
+    
+    
+    public void add(int[]index) {
+    	int i = 0;
+    	int N = index.length;
+    	while (i < N) {
+    		if (index[i] < N - 1) {
+    			index[i]++;
+    			return;
+    		}
+    		else {
+    			index[i] = 0;
+    			i++;
+    		}
+    	}
+    	index[0] = index.length;
+    }
+    
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		System.out.println("Hello JAVA");
+		int [] nums = {1,2,3,4,5 };
+		new Solution().permute(nums);
+	}
+
+}

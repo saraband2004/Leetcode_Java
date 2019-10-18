@@ -1,0 +1,67 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+
+    public int numSquares(int n) {
+        int i = 1;
+        int m;
+        ArrayList <Integer> list = new ArrayList<>();
+        ArrayList <Integer> list2 = new ArrayList<>();
+        while ( (m=i*i) <= n ) {
+            list.add( m );
+            i++;
+        }
+        i = list.size()-1;
+        
+        while (i >= 0) {
+        	list2.add(list.get(i));
+        	i--;
+        }
+        
+        list=list2;
+        System.out.println(list);
+        
+        int [] result= new int [n+1];
+        
+        return NUMSQ(n, list, result, n);
+    }
+    public int NUMSQ(int n, ArrayList<Integer> list, int[]result, int depth) {
+    	if (n == 0) {return 0;}
+    	if (depth == 0) {return n+100;}
+    	if (result[n]!=0) {return result[n];}
+    	
+    	
+    	int min=500;
+    	
+    	for (int m: list) {
+    		if (n-m>=0) {min=Math.min(min, 1+NUMSQ(n-m, list, result, depth));}
+    	}
+    	
+    	result[n]=min;
+    	return min;
+    }
+    
+  
+    
+    
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		Solution S=new Solution();
+		int max=0;
+		int temp;
+		System.out.println(25+": "+S.numSquares(25));
+//		for (int i=5000; i<6000; i++) {
+//			System.out.println(i+" HELLO "+S.numSquares(i));
+//		}
+//		
+		//System.out.println("max: "+max);
+
+	}
+
+}

@@ -1,0 +1,67 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+class Solution {
+    public int count;
+    public int combinationSum4(int[] nums, int target) {
+        count = 0;
+        Arrays.sort(nums);
+        int [] sol = new int[nums.length];
+        DFS(nums, sol, 0, target);
+        return count;
+      }
+    
+    public int result(int[]sol) {
+    	int sum = 0;
+    	for (int s: sol) {
+    		sum+=s;
+    	}
+    	long prod = 1;
+    	for (int i = 0; i<sol.length; i++) {
+    		int temp =1;
+    		while (temp <= sol[i]) {
+    			prod *= sum;
+    			if (prod%temp != 0) {System.out.println("error");}
+    			prod /= temp;
+    			sum --;
+    			temp++;
+    		}
+    	}
+    	while (sum >=1) {
+    		prod *= sum;
+    		sum--;
+    	}
+    	return (int ) prod;
+    }
+    
+    
+    
+    public void DFS(int[]nums, int[]sol, int index, int target) {
+    	if (target < 0) {return;}
+    	if (index == nums.length && target == 0) {
+    		count += result(sol);
+    	//	System.out.print("\n");
+    		return;
+    	}
+    	if (index == nums.length) {return;}
+    	
+    	for (int i = 0; i<= target ; i++) {
+    		sol[index] = i;
+    		if (target - nums[index]*i <0) {break;}
+    		DFS(nums, sol, index+1, target - nums[index]*i);
+    	}
+    	
+    }
+    
+    
+    public static void main(String[]str) {
+    	int [] nums = {1,50};
+    	int [] sol = {1,1,1};
+    	System.out.println(new Solution().result(sol));
+    	//System.out.println(new Solution().combinationSum4(nums,200));
+        
+    }
+}
+
+

@@ -1,0 +1,12 @@
+
+public class Tlass {
+
+	public static void main(String []args) {
+		// TODO Auto-generated method stub
+		System.out.println("hELLO WorLd\n");
+		
+	
+	
+	}
+
+}

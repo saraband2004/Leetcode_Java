@@ -1,0 +1,77 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	public static int threeSumClosest(int[] nums, int target) {
+		if (nums== null ) {return 0;}
+		if (nums.length <= 2) {return 0;}
+		Arrays.sort(nums);
+		int i,j,k;
+		i=0;
+			
+		int closest=nums[0]+nums[1]+nums[nums.length-1];
+		int h;
+		while (i+2 < nums.length) {
+			j=i+1;
+			k=nums.length-1;
+			if (j<k) {
+				
+				if (Math.abs((h=(twoSumClosest(nums, target-nums[i], j, k)+nums[i]))-target)<Math.abs(closest-target)) {
+					System.out.println("closest: "+closest);
+					closest =h;
+					System.out.println("h: "+h);
+				}
+			}
+			else {break;}
+			
+			i++;
+		}
+		return closest;
+    }
+	
+	
+	public static int twoSumClosest(int[] nums, int target, int i, int j) {
+        //Arrays.sort(nums);			
+		Arrays.sort(nums);
+		int closest=nums[i]+nums[j];
+		
+		while(i<j) {
+			//System.out.println(closest);
+			if (Math.abs( nums[i]+nums[j] - target ) < Math.abs(closest - target)) {
+				closest = nums[i]+nums[j];
+			}
+			if (nums[i]+nums[j]>target) {
+				j--;
+			}
+			else if (nums[i]+nums[j]<target) {
+				i++;
+			}
+			else if (nums[i]+nums[j] == target) {
+				return target;
+			}
+			
+			
+		}
+		return closest;
+		
+    }
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int[] nums= {-1,2,1,-4};
+		//System.out.println(twoSumClosest(nums,-6,0,3)+"x");
+		System.out.println(threeSumClosest(nums, 1));
+		
+//		int[]nums= {1,2,3,5,  6,7,9,11};
+//		System.out.println(twoSumClosest(nums,100,0,7)+"x");
+		
+		
+	}
+
+}

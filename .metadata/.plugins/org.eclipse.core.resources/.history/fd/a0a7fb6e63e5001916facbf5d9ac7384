@@ -1,0 +1,62 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    
+	public int countOne(int x){
+		int result = 0;
+		
+		while (x!=0) {
+			x -= (x & ~(x-1));
+			result  ++;
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	public List<String> readBinaryWatch(int num) {
+		HashMap<Integer, ArrayList<Integer>> map=new HashMap<>();
+		for (int i = 0; i< 20; i++) {
+			map.put(i, new ArrayList<Integer>());
+		}
+		for (int i = 0; i<= 60; i++) {
+			map.get(countOne(i)).add(i);
+		}
+		List<String> list = new ArrayList<>();
+		for (int i = 0; i<= num; i++) {
+			List<Integer> hours = map.get(i);
+			List<Integer> mins = map.get(num-i);
+			
+			for (int hour: hours) {
+				String h = new String();
+				h = Integer.toString(hour);
+				for (int min: mins) {
+					String m = new String();
+					m = Integer.toString(min);
+					if (min < 10) { m = "0"+m;}
+					
+					if (hour <= 12 && min<= 60) {
+						list.add(h+":"+m);
+					}
+				}
+			}
+			
+			
+		}
+		
+		return list;
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		String str= Integer.toString(55);
+		System.out.println(str);
+		System.out.println(new Solution().readBinaryWatch(6));
+	}
+
+}

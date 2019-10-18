@@ -1,0 +1,27 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print("aaa");
+		List<Character> list=new LinkedList<>();
+		list.add('a');
+		list.add('b');
+		list.add('c');
+		list.add('d');
+		list.add('e');
+		
+		System.out.println(list);
+		
+		System.out.println(list.remove(0));
+		String s=list.toString();
+		
+		System.out.println(s.length());
+
+	}
+
+}

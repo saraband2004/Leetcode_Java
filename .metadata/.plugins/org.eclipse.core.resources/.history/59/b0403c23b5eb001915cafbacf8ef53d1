@@ -1,0 +1,45 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+
+	    public String simplifyPath(String path) {
+	    	Stack<String> stack = new Stack<>();
+	    	char[]c = path.toCharArray();
+	    	int i = 0;
+	    	String folder = "";
+	    	while (i < c.length) {
+	    		
+	    		if (c[i] == '/' ) {
+	    			if (folder.compareTo("..") == 0) {
+	    				if (!stack.isEmpty()) {stack.pop();}
+	    			}
+	    			else if (folder.compareTo(".") == 0) {}
+	    			else if (folder.length()!=0) {
+	    				stack.push(folder);
+	        			folder = new String ();
+	    			}
+	    		}
+	    		else if (c[i]!= '/') {
+	    			folder = folder+c[i];
+	    		}
+	    		i++;
+	    	}
+	    	String result = "";
+	        if (stack.isEmpty()){return "/";}
+	    	while (!stack.isEmpty()) {
+	    		result = "/" + stack.pop() + result;
+	    	}
+	    	return result;
+	    	
+	    }
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		System.out.println("Hello JAVA");
+	}
+
+}

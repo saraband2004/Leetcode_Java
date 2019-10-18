@@ -1,0 +1,67 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	int [] NUMS;
+    public Solution(int[] nums) {
+        NUMS = nums;
+    }
+    
+    /** Resets the array to its original configuration and return it. */
+    public int[] reset() {
+        return NUMS;
+    }
+    
+    /** Returns a random shuffling of the array. */
+    public int[] shuffle() {
+    	int N = NUMS.length;
+    	int [] nums = new int [N];
+    	boolean [] status = new boolean [N];
+    	Random RNG = new Random();
+    	int temp;
+    	int k;
+    	for (int n = 0; n<N; n++ ) {
+    		temp = RNG.nextInt(N-n);
+    		k=0;
+    		
+    		while (temp>0) {
+    			if (status[k] == false) {temp -- ;}
+    			k++;
+    		}
+    		
+    		nums[n] = NUMS[k];
+    		status[k] = true;
+    		
+    	}
+    	
+    	
+        return nums;
+    }
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Random RNGesus = new Random();
+		int [] count = new int[10];
+		for (int i=0; i<10; i ++) {
+		
+		count [RNGesus.nextInt(10)]++;
+		
+		}
+		for (int n: count) {
+			System.out.print(n+" ");
+		}
+		
+		int [] nums = {10,20,30,40,50,60,70};
+		Solution S = new Solution(nums);
+	    int [] r = S.shuffle();
+	    for (int rr: r) {
+	    	System.out.print(rr+" ");
+	    }
+		
+	}   
+ 
+
+}

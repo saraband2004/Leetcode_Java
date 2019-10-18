@@ -1,0 +1,83 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	public static List<String> neighbors(String s){ 
+		List<String> result=new ArrayList<>();
+		int index=0;
+		char a;
+		String newstring=new String();
+		while(index < s.length()) {
+			a='a';
+			while(a<='z') {
+				for (int i=0; i< s.length(); i++) {
+					if (i != index) {
+						newstring = newstring +  s.charAt(i);
+					}
+					else {
+						newstring= newstring+a;
+					}
+				}
+				result.add(new String(newstring));
+				a++;
+				newstring="";
+			}
+			index++;
+		}
+		
+		
+		return result;
+	}
+	
+	public static List<List<String>> findLadders(String start, String end, Set<String> dict) {
+        // write your code here
+		List<List<String>> result=new ArrayList<>();
+		if (start == null || start.length() == 0) {return result;}
+		
+		Queue<String> queue=new LinkedList<>();
+		List<List<String>> record=new ArrayList<>();
+		HashSet<String> visited=new HashSet<>();
+		
+		queue.offer(start);
+		visited.add(start);
+		int size;
+		String s;
+		List<String> recordtemp;
+		boolean sign=false;
+		
+		while( !queue.isEmpty() ) {
+			size = queue.size();
+			recordtemp=new ArrayList<String>();
+			for ( int i=0 ; i < size ; i++ ) {
+				s=queue.poll();
+				recordtemp.add(s);
+				if (s.compareTo(end) ==0 ) {
+					sign=true; 
+					break;
+					}
+				for (String t: neighbors(s)) {
+					if ( (!visited.contains(t)) && dict.contains(t) ) {
+						queue.offer(t);
+						visited.add(t);
+					}
+				}
+			}
+			record.add(recordtemp);
+			if (sign) {break;}
+		}
+		return result;	
+    }
+	
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print(true);
+		HashSet<String> dict=new HashSet<>();
+		findLadders("abc", "adc", dict);
+	}
+
+}

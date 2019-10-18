@@ -1,0 +1,12 @@
+public class Sub_class {
+   
+   public static void main(String args[]) {
+     
+     System.out.println("Hello");
+     
+//      Sub_class obj = new Sub_class();
+  //    obj.my_method();
+      
+      System.out.println("Hello");
+   }
+}

@@ -1,0 +1,59 @@
+class mod{
+	public int value;
+}
+
+
+
+
+public class Solution {
+	public static mod function(mod x) {
+		return x;
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	//		System.out.print("xxx");
+	
+			mod X = new mod();
+			X.value=1990;
+			
+			System.out.println(X.value);
+			
+			mod Y=X;
+			
+			System.out.println(Y.value);
+			
+			Y.value=1888;
+			
+			System.out.println(X.value);
+			
+			System.out.println(X==Y);
+			
+			//mod Z=new mod();
+			Z.value=X.value;
+			
+			System.out.println(X==Z);
+			
+			
+			mod Z;
+			Z=function(X);
+			
+			System.out.println(X==Z);
+			
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
+}

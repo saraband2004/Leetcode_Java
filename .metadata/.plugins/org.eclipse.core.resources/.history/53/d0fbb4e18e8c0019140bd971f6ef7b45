@@ -1,0 +1,41 @@
+class Outer {
+   int num;
+   
+   static class Inner{
+      public void innerfunction() {
+		   		
+		   System.out.println("innerfunction");
+		   
+	   }
+	   
+    }
+   
+   void outerfunction() {
+	   Inner x=new Inner();
+	   x.innerfunction();   
+	   
+   }
+   
+
+}
+   
+public class Myclass {
+
+   public static void main(String args[]) {
+       
+      //Outer ox = new Outer();
+      //ox.outerfunction();
+      
+      
+      //Outer.Inner tooth=ox.new Inner();
+      
+      //tooth.innerfunction();
+     
+	  
+	   Outer.Inner t=new Outer.Inner();
+	   t.innerfunction();
+	   
+	   
+      
+   }
+}

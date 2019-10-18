@@ -1,0 +1,54 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	public static List<String> neighbors(String s){ 
+		List<String> result=new ArrayList<>();
+		return result;
+	}
+	
+	public static List<List<String>> findLadders(String start, String end, Set<String> dict) {
+        // write your code here
+		List<List<String>> result=new ArrayList<>();
+		if (start == null || start.length() == 0) {return result;}
+		
+		Queue<String> queue=new LinkedList<>();
+		List<List<String>> record=new ArrayList<>();
+		HashSet<String> visited=new HashSet<>();
+		
+		queue.offer(start);
+		visited.add(start);
+		int size;
+		String s;
+		
+		while( !queue.isEmpty() ) {
+			size = queue.size();
+			for ( int i=0 ; i < size ; i++ ) {
+				s=queue.poll();
+				
+				
+				
+				
+			}
+			
+		}
+		
+		
+		
+		
+		return result;	
+    }
+	
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print(true);
+		HashSet<String> dict=new HashSet<>();
+		findLadders("abc", "adc", dict);
+	}
+
+}

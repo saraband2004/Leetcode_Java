@@ -1,0 +1,20 @@
+//162. Find Peak Element
+public class Solution {
+	
+	public int findPeakElement(int[] nums) {
+        int left=0;
+        int right=nums.length-1;
+        int mid;
+        
+        
+        
+    }
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			System.out.print("xxx");
+	}
+
+}

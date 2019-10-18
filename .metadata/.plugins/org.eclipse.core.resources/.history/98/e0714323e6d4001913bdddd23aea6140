@@ -1,0 +1,61 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public int findUnsortedSubarray(int[] nums) {
+        Stack<Integer> stack = new Stack<>();
+        
+        int i = 0;
+        
+        while(i < nums.length){
+            if (stack.isEmpty()){
+                stack.push(i);
+                i++;
+        
+            }
+            else if (nums[i] >= nums[stack.peek()]){
+                stack.push(i);
+                i++;
+        
+            }
+            else {
+                stack.pop();
+            }
+        }
+        
+        System.out.println(stack.size());
+        
+        int [] container = new int[SIZE];
+        if (stack.size()==nums.length){
+            return 0;}
+        for (int j = stack.size()-1; j>= 0; j--){
+            container [j] = stack.pop();
+        }
+        
+        int left = 0;
+        while(left < container.length && container[left] == left){
+            left++;
+        }
+        int right = container.length-1;
+        int X = nums.length -1;
+        //if (left>right){return 0;}
+        while(right >=0 && container[right] == X){
+            right--;
+            X--;
+        }
+        
+        return X - left+2;
+    }
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[]nums = {1,2,3,4,5};
+		System.out.println(new Solution().findUnsortedSubarray(nums));
+		
+	}   
+ 
+
+}

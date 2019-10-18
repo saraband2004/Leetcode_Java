@@ -1,0 +1,31 @@
+class Human{
+	
+}
+
+class HomoSapien extends Human{
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+public class MYMAIN {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Human X=new Human();
+		HomoSapien Y=new HomoSapien();
+		System.out.println(X instanceof Human);
+		System.out.println(Y instanceof Human);
+		System.out.println(X instanceof HomoSapien);
+		System.out.println(Y instanceof HomoSapien);
+	}
+
+}

@@ -1,0 +1,30 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    
+	public int countOne(int x){
+		int result = 0;
+		
+		while (x!=0) {
+			x &= ~(x-1);
+			result  ++;
+		}
+		
+		return result;
+	}
+	
+	public List<String> readBinaryWatch(int num) {
+        
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		String str= Integer.toString(55);
+		System.out.println(str);
+		System.out.println(new Solution().countOne(65));
+	}
+
+}

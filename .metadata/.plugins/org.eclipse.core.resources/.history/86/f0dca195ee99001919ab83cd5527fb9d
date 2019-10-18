@@ -1,0 +1,32 @@
+
+public class Solution {
+	public int numIslands(char[][] grid) {
+		int x=0;
+		int y=0;
+		int count++;
+		while(y < grid.length) {
+			while (x < grid[0].length) {
+				
+				x++;
+				if (x == grid[0].length) {
+					y++;
+				}
+				
+			}
+			
+			
+		}
+		
+		
+		
+		return 0;	
+    }
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			int  [][] grid = {{1,0,0},{1,0,1},{0,0,0}};
+		
+			System.out.print("xxx");
+	}
+
+}

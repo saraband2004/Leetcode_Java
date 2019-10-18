@@ -1,0 +1,64 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	public static int trap(int[] height) {
+        int trapwater=0;
+        
+        int left=0;
+        int right=height.length-1;
+        
+        
+        int levelleft=height[left];
+        int levelright=height[right];
+        
+        boolean test=true;
+        
+        
+        while (left<right) {
+        	test=true;
+        	while (levelleft > levelright && left<right) {
+        		test=false;
+        		if (height[right] > levelright) {
+        			levelright = height[right];
+        			
+        		}
+        		else {
+        			trapwater+=levelright-height[right];
+        		}
+        		right--;
+        		System.out.print("R");
+        	}
+        	
+        	while (levelleft < levelright && left<right) {
+        		test=false;
+        		if (height[left] > levelleft) {
+        			levelleft = height[left];
+        			
+        		}
+        		else {
+        			trapwater+=levelleft-height[left];
+        		}
+        		left++;
+        		System.out.print("L");
+        	}
+        	//System.out.println("XX");
+        	if (test) {break;}
+        }
+        
+        
+        
+        return trapwater;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	
+		int[]nums= {0,1,0,2,1,0,1,3,2,1,2,1};
+		System.out.println(trap(nums));
+	}
+
+}

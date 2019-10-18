@@ -1,0 +1,50 @@
+
+public class Solution {
+	public int static numIslands(char[][] grid) {
+		int x=0;
+		int y=0;
+		int count++;
+		while(y < grid.length) {
+			while (x < grid[0].length) {
+				
+				x++;
+				
+				
+				
+				if (grid[y][x]=='1') {
+					
+					count++;
+					
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				if (x == grid[0].length) {
+					y++;
+				}
+				
+			}
+			
+			
+		}
+		
+		
+		
+		return 0;	
+    }
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			int  [][] grid = {{1,0,0},{1,0,1}};
+		
+			System.out.print(numIslands(grid));
+	}
+
+}

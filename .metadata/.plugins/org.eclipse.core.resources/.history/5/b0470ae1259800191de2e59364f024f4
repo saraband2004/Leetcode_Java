@@ -1,0 +1,25 @@
+
+public class Solution {
+	public static int[] twoSum(int[] nums, int target) {
+		int[]ans= {1000,1000};
+		
+		
+		return ans;
+	}
+	
+	class Node{
+		public int value;
+		public int index;
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+			int[]nums = {1,2,3,4};
+			int[]ans = twoSum(nums,3);
+			System.out.print(ans[0]+" @ @ "+ans[1]);
+			Solution SS=new Solution();
+			//Solution.Node Xle=new SS.Node();
+	}
+
+}

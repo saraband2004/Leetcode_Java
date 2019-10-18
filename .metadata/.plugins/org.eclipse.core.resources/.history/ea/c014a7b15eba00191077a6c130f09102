@@ -1,0 +1,91 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+    public static String  fractionToDecimal(int a, int b) {
+    	
+    	if (a==0) {return "0";}
+    	//if (-b==b) {return "0.0000000004656612873077392578125";}
+    	if (a%b ==0) {return Integer.toString(a/b);}
+    	
+    	//if (a <0 && b<0) {return fractionToDecimal(-a,-b);}
+    	//else if (a>0 && b>0) {
+    	long remainder;
+    	String result=new String();
+    	
+    	
+    	
+    	
+    	if (a%b == 0) {result=Integer.toString(a/b); return result;}
+    	
+    	
+    	result=Integer.toString(a/b);
+    	remainder=a-(a/b)*b;
+    	
+    	result=result+".";
+    	StringBuilder sb=new StringBuilder();
+    	HashMap<Integer, Integer> map=new HashMap<>();
+    	int index=0;
+    	long temp;
+    	int Parent;
+    	remainder*=10;
+    	
+    	if (remainder%2==0 && b%2==0) {
+    		remainder=remainder/2;
+    		b=b/2;
+    	}
+    	
+    	
+    	while (remainder !=0) {
+    		if (map.containsKey(remainder)) {
+    			Parent=map.get(remainder);
+    			sb.insert(Parent, '(');
+    			sb.append(')');
+    			result=result+sb.toString();
+    	    	return result;
+    		}
+    		temp=remainder/b;
+    		sb.append((char)(temp+'0'));
+    		
+    		
+    		
+    		map.put((int)remainder, index);
+    		remainder=remainder%b;
+    		
+    		remainder=remainder*10;
+//    		if (b%2==0) {b=b/2; remainder=remainder/2;}
+//    		if (b%5==0) {b=b/5; remainder=remainder/5;}
+    		index++;
+    	}
+    	result=result+sb.toString();
+    	return result;
+//    	}
+//    	a=a>0?a:-a;
+//    	b=b>0?b:-b;
+//    	return "-"+fractionToDecimal(a, b);
+//    	
+    }
+    
+    
+    
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		String s=Integer.toString(3241);
+		System.out.println(s);
+		StringBuilder sb=new StringBuilder("abcdefg");
+		System.out.println(sb);
+		sb.insert(0, 'x');
+		
+		System.out.println(fractionToDecimal(1,33));
+		//System.out.println(fractionToDecimal(1,11));
+		
+		
+		
+	}
+
+}

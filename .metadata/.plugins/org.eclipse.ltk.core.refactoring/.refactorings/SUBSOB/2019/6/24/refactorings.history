@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;SUBBBB&apos; to &apos;SUB&apos;&#x0D;&#x0A;- Original project: &apos;SUBSOB&apos;&#x0D;&#x0A;- Original element: &apos;SUBBBB&apos;&#x0D;&#x0A;- Renamed element: &apos;SUB&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;SUBBBB&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{SUBBBB.java[SUBBBB" matchStrategy="1" name="SUB" qualified="false" references="true" similarDeclarations="false" stamp="1560629122097" textual="false" version="1.0"/>
+</session>

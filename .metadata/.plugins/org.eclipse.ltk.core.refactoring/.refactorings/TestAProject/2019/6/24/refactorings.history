@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Sub_class&apos; to &apos;SUB&apos;&#x0D;&#x0A;- Original project: &apos;TestAProject&apos;&#x0D;&#x0A;- Original element: &apos;Sub_class&apos;&#x0D;&#x0A;- Renamed element: &apos;SUB&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Sub_class&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Sub_class.java[Sub_class" matchStrategy="1" name="SUB" qualified="false" references="true" similarDeclarations="false" stamp="1560628571443" textual="false" version="1.0"/>
+</session>

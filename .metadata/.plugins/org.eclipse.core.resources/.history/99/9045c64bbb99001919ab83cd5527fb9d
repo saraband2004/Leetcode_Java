@@ -1,0 +1,55 @@
+import java.util.*;
+
+public class Solution {
+	
+	public static void Prime(ArrayList<Integer> primes) {
+		
+		int count;
+		int n=2;
+		while( n < 1024 ) {
+			count=0;
+			for (int p: primes) {
+				if (n % p ==0 ) {
+					count++;
+					break;
+					
+				}			
+				
+			}
+			if (count == 0) {
+				primes.add(n);
+				//System.out.println(n);
+			}
+			n++;
+			
+			
+		}
+		
+		
+	}
+	
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> primes=new ArrayList<>();
+		//	System.out.print("xxx");
+			Prime(primes);
+			System.out.println("finished");
+			
+			for (int p: primes) {
+				System.out.println(p);
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+	}
+
+}

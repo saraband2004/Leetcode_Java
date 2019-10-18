@@ -1,0 +1,133 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+class TreeNode {
+     int val;
+     TreeNode left;
+     TreeNode right;
+     TreeNode(int x) { val = x; }
+}
+ 
+
+
+class Codec {
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        
+        Queue<TreeNode> q=new LinkedList<>();
+        q.offer(root);
+        TreeNode p;
+        String result=new String();
+        boolean status=true;
+        while (!q.isEmpty()){
+            p = q.poll();
+            if (p == null ){
+                if (status) {
+                    result = result+"#";
+                    status=false;
+                }
+                else {
+                	result = result+",#";
+                }
+            }
+            else {
+                if (status) {
+                	result = result+Integer.toString(p.val);
+                    status=false;
+                }
+                else {
+                	result = result+","+Integer.toString(p.val);
+                }
+                q.offer(p.left);
+                q.offer(p.right);
+            }
+        }
+        return result;
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+    	char[]c=data.toCharArray();
+    	
+    	int index = 0;
+    	
+    	if (c.length==0||c[0] == '#') {return null;}
+    	
+    	int temp=0;
+    	
+    	Queue<TreeNode> q =new LinkedList<>();
+    	
+    	TreeNode node;
+    	
+    	TreeNode ROOT = new TreeNode (88888);
+    	TreeNode p = null;
+    	q.offer(ROOT);
+    	
+    	while (index <= c.length) {
+    		if (index == c.length || c[index] == ',') {
+    			node=new TreeNode(temp);
+    			q.offer(node);
+    			temp=0;
+    		}else if (c[index] == '#') {
+    			node=null;
+    			q.offer(node);
+    			temp=0;
+    			index++;
+    		}else {
+    			temp=temp*10+ (c[index]-'0');
+    		}
+    		index++;
+    	}
+        
+    	ROOT.right=q.peek();
+    	Queue <TreeNode> Qu = new LinkedList<>();
+    	Qu.offer(q.poll());
+    	
+    	TreeNode left;
+    	TreeNode right;
+    	
+    	while (!Qu.isEmpty()) {
+    		p=Qu.poll();
+    		
+    		left = q.poll();
+    		right =q.poll();
+    		
+    		p.left = left;
+    		p.right = right;
+    		
+    		if (left!=null) {Qu.offer(left);}
+    		if (right!=null) {Qu.offer(right);}
+    			
+    	}
+    	return ROOT.right;
+    	
+    }
+}
+
+public class Solution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		Codec C=new Codec();
+		TreeNode L1 = new TreeNode(1);
+		TreeNode L2 = new TreeNode(2);
+		TreeNode L3 = new TreeNode(3);
+		TreeNode L4 = new TreeNode(4);
+		TreeNode L5 = new TreeNode(5);
+		L1.left=L2;
+		L1.right=L3;
+		L3.left=L4;
+		L3.right=L5;
+		
+		System.out.println(C.serialize(L1));
+		String t=C.serialize(L1);
+		
+		TreeNode L =C.deserialize(t);
+		System.out.println(C.serialize(L));
+	}
+
+}

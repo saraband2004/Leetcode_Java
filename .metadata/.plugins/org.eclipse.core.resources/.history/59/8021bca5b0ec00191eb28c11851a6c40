@@ -1,0 +1,59 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+    	LinkedList<Integer> temp= new LinkedList<>();
+    	List<List<Integer>> result = new LinkedList<>();
+    	List<List<Integer>> nresult = new LinkedList<>();
+    	result.add(temp);
+    	int i = 0;
+    	while(i < nums.length) {
+    		nresult = new LinkedList<>();
+    		for (int j = 0; j<i+1; j++) {
+    			for (List<Integer> list: result) {
+    				list.add(j, nums[i]);
+    				nresult.add(new LinkedList<>(list));
+    				list.remove(j);
+    			}
+    		}
+    		i++;
+    		result = nresult;
+    	}
+    	
+    	
+    	
+    	
+    	
+    	
+    	return result;
+    }
+    
+    
+    public void add(int[]index) {
+    	int i = 0;
+    	int N = index.length;
+    	while (i < N) {
+    		if (index[i] < N - 1) {
+    			index[i]++;
+    			return;
+    		}
+    		else {
+    			index[i] = 0;
+    			i++;
+    		}
+    	}
+    	index[0] = index.length;
+    }
+    
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		System.out.println("Hello JAVA");
+		int [] nums = {1,2,3,4,5 };
+		new Solution().permute(nums);
+	}
+
+}

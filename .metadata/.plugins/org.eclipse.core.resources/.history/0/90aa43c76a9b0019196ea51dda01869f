@@ -1,0 +1,39 @@
+import java.io.*; 
+import java.util.*; 
+
+
+class TreeNode{
+	public int val;
+	public TreeNode left;
+	public TreeNode right;
+	
+}
+
+
+
+public class Solution {
+	public static TreeNode findSubtree(TreeNode root) {
+		
+		Stack<TreeNode> stack=new Stack<>();
+		stack.push(root);
+		
+		return root;
+		
+		
+		
+		
+		
+    }
+	
+	
+	
+	
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			System.out.print("xxx");
+			TreeNode l1=new TreeNode ();
+	}
+
+}

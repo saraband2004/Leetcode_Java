@@ -1,0 +1,120 @@
+
+class TreeNode {
+     public int val;
+     public TreeNode left, right;
+     public TreeNode(int val) {
+         this.val = val;
+         this.left = this.right = null;
+     }
+}
+
+class resulttype{
+	public int minvalue;
+	public TreeNode minnode;
+	public int currentvalue;
+	public TreeNode currentnode;
+}
+
+
+
+
+public class Solution {
+	public static TreeNode findSubtree(TreeNode root) {
+        // write your code here
+		if (root==null) {return root;}
+		
+		resulttype result=new resulttype();		
+		result.currentnode=root;
+		
+		
+		
+		System.out.println("\nbest: "+ findSubtreeaux(result).currentnode.val);
+		return findSubtreeaux(result).minnode;
+		
+    }
+	
+	public static resulttype findSubtreeaux(resulttype Result) {
+        // write your code here
+		//if (root == null) {return 0;}
+		TreeNode node=Result.currentnode;
+		TreeNode left=node.left;
+		TreeNode right=node.right;
+		resulttype ResultNew = new resulttype();
+		resulttype ResultLeft = new resulttype();
+		resulttype ResultRight = new resulttype();
+		ResultLeft.currentnode=left;
+		ResultRight.currentnode=right;
+		int l;
+		int r;
+		ResultNew.currentnode=node;
+		if (left == null && right == null) {
+			ResultNew.minnode=node;
+			ResultNew.currentvalue=node.val;
+			ResultNew.minvalue=node.val;
+		}
+		else if (left != null && right != null) {
+			ResultNew.currentvalue=node.val + (l = findSubtreeaux(ResultLeft).currentvalue) + (r = findSubtreeaux(ResultRight).currentvalue);
+			if (l < r && l < l+r+node.val) {
+				ResultNew.minvalue=l;
+				ResultNew.minnode=left;
+			}
+			else if (r < l && r < l+r+node.val) {
+				ResultNew.minvalue=r;
+				ResultNew.minnode=right;
+			}
+			else {
+				ResultNew.minvalue=l+r+node.val;
+				ResultNew.minnode=node;
+			}
+		}
+		else if (left != null && right == null) {
+			ResultNew.currentvalue=node.val + (l = findSubtreeaux(ResultLeft).currentvalue);
+			if (l < l+node.val) {
+				ResultNew.minvalue=l;
+				ResultNew.minnode=left;
+			}
+			else {
+				ResultNew.minvalue=l+node.val;
+				ResultNew.minnode=node;
+			}
+		}
+		else if (right != null && left == null) {
+			ResultNew.currentvalue=node.val + (r = findSubtreeaux(ResultRight).currentvalue);
+			if (r < r+node.val) {
+				ResultNew.minvalue=r;
+				ResultNew.minnode=right;
+			}
+			else {
+				ResultNew.minvalue=r+node.val;
+				ResultNew.minnode=node;
+			}
+		}
+		
+		
+		
+		return ResultNew;
+		
+		
+    }
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			System.out.print("xxx");
+			TreeNode root = new TreeNode(10);
+			TreeNode l1 = new TreeNode(1);
+			TreeNode l3 = new TreeNode(2);
+			//TreeNode l2 = new TreeNode(3);
+			root.left=l1;
+			//root.right=l2;
+			l1.left=l3;
+			findSubtree(root);
+			int a;
+			System.out.println(a=5);
+			
+	}
+
+}

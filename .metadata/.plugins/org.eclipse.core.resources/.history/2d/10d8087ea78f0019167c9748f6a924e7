@@ -1,0 +1,29 @@
+class Super_class {
+   int num = 20;
+
+   // display method of superclass
+   public void display() {
+      System.out.println("This is the display method of superclass");
+   }
+}
+
+public class Sub_class extends Super_class {
+   int num = 10;
+
+   // display method of sub class
+   public void display() {
+      System.out.println("This is the display method of subclass");
+   }
+
+
+
+   public static void main(String args[]) {
+     
+     System.out.println("Hello");
+     
+//      Sub_class obj = new Sub_class();
+  //    obj.my_method();
+      
+      System.out.println("Hello");
+   }
+}

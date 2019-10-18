@@ -1,0 +1,52 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+class Codec {
+	public String serializeInteger(int x) {
+		String result ="";
+		result = (char)(x&255) + result;
+		x >>>=8;
+		result = (char)(x&255) + result;
+		x >>>=8;
+		result = (char)(x&255) + result;
+		x >>>=8;
+		result = (char)(x&255) + result;
+		x >>>=8;
+		return result;
+		
+	}
+	public int deserializeInteger(String s) {
+		int x = 0;
+		for (int i=0; i<s.length(); i++) {
+			x <<= 8;
+			x += (int)s.charAt(i);
+		}
+		return x;
+	}
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        
+    }
+}
+public class Solution {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		System.out.println(Math.log(2.7));
+		Codec c = new Codec();
+		System.out.println(c.deserializeInteger(c.serializeInteger(-2341231)));
+	}
+
+}

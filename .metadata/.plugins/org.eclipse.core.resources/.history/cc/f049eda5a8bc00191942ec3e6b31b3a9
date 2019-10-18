@@ -1,0 +1,76 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+class TreeNode {
+    public int val;
+    List<TreeNode> next;
+    public TreeNode(int value){
+        val=value;
+        next= new ArrayList<>();
+    }
+}
+
+
+
+class Solution {
+    public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        TreeNode [] tree = new TreeNode[n];
+        
+        for (int i=0; i < n ; i++){
+            tree[i] = new TreeNode(i);
+        }
+        
+        int [] degree = new int[n];
+        boolean [] status =new boolean[n];
+        
+        for (int [] edge: edges){
+            tree[edge[0]].next.add(tree[edge[1]]);
+            tree[edge[1]].next.add(tree[edge[0]]);
+            degree[edge[0]]++;
+            degree[edge[1]]++;
+        }
+        
+        int N = n;
+        
+        Queue<TreeNode> queue =new LinkedList<>();
+        
+        for (int i=0; i<n; i++){
+            if (degree[i] == 1){
+                queue.add(tree[i]);
+                //status[i]=true;
+                //N--;
+                degree[i]--;
+            }
+        }
+        TreeNode p;
+        int size;
+        while ( N >= 3 ) {
+            size=queue.size();
+            while (size > 0){
+                p = queue.poll();
+                status[p.val] = true;
+                N--;
+                for (TreeNode node: p.next){
+                    degree[node.val] -- ;
+                    if (!status[node.val]  && degree[node.val]==0){ 
+                        queue.offer(node);
+     //                   status[node.val]=true;
+                    }
+                }    
+                size--;    
+            }
+            
+        }
+        List<Integer> result=new LinkedList<>();
+        for (int i=0; i< n ; i++){
+            if (!status[i]) {result.add(i);}
+        }
+        return result;
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print("aaa");
+
+	}
+}

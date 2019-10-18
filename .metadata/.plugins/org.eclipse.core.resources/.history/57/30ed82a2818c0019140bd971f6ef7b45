@@ -1,0 +1,28 @@
+class Outer_Demo {
+   int num;
+   
+   public class Inner_Demo {
+   /*   public void print() {
+         System.out.println("This is an inner class");
+      }
+      */
+	   public class void function() {
+		   		
+		   System.out.println("x");
+		   
+	   }
+	   
+    }
+
+}
+   
+public class Myclass {
+
+   public static void main(String args[]) {
+      // Instantiating the outer class 
+      Outer_Demo outer = new Outer_Demo();
+      
+      // Accessing the display_Inner() method.
+      outer.Inner_Demo.function;
+   }
+}

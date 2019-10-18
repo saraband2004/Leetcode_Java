@@ -1,0 +1,88 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	public static boolean  wordPatternMatch(String pattern, String str) {
+        // write your code here
+		HashMap<Character, String> map=new HashMap<>();
+		Set<String> set = new HashSet<>();
+		if (pattern==null || str==null) {return false;}
+		if (pattern.length()==0 || str.length()==0) {return false;}
+		
+		return wordPatternMatchII(pattern, str, 0, 0, map, set);
+    }
+	
+	public static boolean  wordPatternMatchII(String pattern, String str, int indexpattern, int indexstr, HashMap<Character, String> map,Set<String> set) {
+        // write your code here
+		int length;
+		String string;
+		int indexend;
+		int count=0;
+		boolean temptest;
+		
+		if (indexpattern==pattern.length() && indexstr==str.length()) {
+			return true;
+		}
+		else if (indexpattern==pattern.length() || indexstr==str.length()) {
+			return false;
+		}
+		else {
+			if (map.containsKey(pattern.charAt(indexpattern))) {
+				string=map.get(pattern.charAt(indexpattern));
+				length=string.length();
+				if (indexstr+length <= str.length()) {
+					if (0==string.compareTo(str.substring(indexstr, indexstr+length))) {
+						
+						return wordPatternMatchII(pattern, str, indexpattern+1, indexstr+length, map, set);
+						
+						
+					}else {return false;}
+					
+					
+				}else {return false;}
+				
+			}else {
+				indexend=indexstr+1;
+				while ( indexend <= str.length() ) {
+					if (set.contains(str.substring(indexstr, indexend))) {indexend++;continue;}
+					
+					map.put(pattern.charAt(indexpattern), str.substring(indexstr, indexend));
+					
+					set.add(str.substring(indexstr, indexend));
+					
+					temptest= wordPatternMatchII(pattern, str, indexpattern+1, indexend, map, set);
+					
+					if (temptest) {count++;}
+					
+					set.remove(str.substring(indexstr, indexend));
+					
+					map.remove(pattern.charAt(indexpattern));
+					
+					indexend++;
+				}
+			}
+		}
+		
+		if (count>0) { 
+			return true;
+		}
+		return false ;
+    }
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println ("finished");
+		
+		System.out.println(wordPatternMatch("wqojxmdc", "zgodhogujnsluwgnadxlgw"));  
+		
+		String s="abcdefg";
+		String t="abcdefg";
+		System.out.print(s.compareTo(t));
+		System.out.println("asc".compareTo(s.substring(1, 3)));
+	}
+
+}

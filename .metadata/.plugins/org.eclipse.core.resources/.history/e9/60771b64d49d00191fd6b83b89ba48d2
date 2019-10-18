@@ -1,0 +1,38 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	
+	public List<List<String>> splitString(String s) {
+        // write your code here
+		List<List<String>> result=new ArrayList<>();
+		List<String> temp=new ArrayList<>();
+		
+		
+		
+		
+		
+		
+    }
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print(true);
+		String s="abcdefg";
+		char u='b';
+		s+="a";
+		s+='a';		
+		s=s+u;
+		System.out.print(s);
+		
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,35 @@
+
+
+class resulttype{
+	public int minvalue;
+	public TreeNode minnode;
+	public int currentvalue;
+	public TreeNode currentnode;
+}
+class TreeNode{
+	public int val;
+	public TreeNode left;
+	public TreeNode right;
+	
+}
+
+
+
+public class Solution {
+	public static TreeNode findSubtree(TreeNode root) {
+		
+		
+    }
+	
+	
+	
+	
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			System.out.print("xxx");
+			TreeNode l1=new TreeNode ();
+	}
+
+}

@@ -1,0 +1,115 @@
+import java.util.*;
+
+class Node {
+    public int val;
+    public List<Node> neighbors;
+    public Node() {}
+    public Node(int _val,List<Node> _neighbors) {
+        val = _val;
+        neighbors = _neighbors;
+    }
+};
+
+
+public class Solution {
+	
+	
+	public static Node cloneGraph(Node node) {
+	        
+	        Node nodenew=new Node();
+	        
+	        HashMap<Integer, Node> map=new HashMap<>();
+	        HashMap<Integer, Node> mapnew=new HashMap<>();
+	        Queue<Node> kueue=new LinkedList<>();
+	        
+	        nodenew.val=node.val;
+	        kueue.offer(node);
+	        
+	        Node x;
+	        map.put(node.val, node);
+	        mapnew.put(nodenew.val, nodenew);
+	        int y;
+	        
+	        while( !kueue.isEmpty() ) {
+	        	x=kueue.poll(); 																//System.out.println("x");
+	        	y=x.val;
+	        	List<Node> templist=new LinkedList<>();
+	        	templist=map.get(y).neighbors;															//
+	        	for (Node neigh: templist ) {
+	        		System.out.println("@@ "+neigh.val);
+	        		if (!map.containsKey(neigh.val)) {
+	        			
+	        			Node l=new Node();
+		        		l.val=neigh.val;
+		        		kueue.offer(l);
+		        		map.put(neigh.val,neigh);
+		        		mapnew.put(l.val, l);
+		        			        			
+	        		}
+	        		System.out.println("@x@ "+neigh.val);
+	        		System.out.println(mapnew.containsKey (neigh.val)+"x.neighbors is empty: "+x.neighbors.isEmpty());
+	        		
+	        		//x.neighbors.add ( mapnew.get(neigh.val) );
+	        		
+	        	}      	
+	        	
+	        }
+	        
+	        
+	        
+	        
+	        return nodenew;
+	    }
+
+	public static void main(String[] args) {
+		//
+		Node n1=new Node();
+		Node n2=new Node();
+		Node n3=new Node();
+		Node n4=new Node();
+		n1.val=1;
+		n2.val=2;
+		n3.val=3;
+		n4.val=4;
+		n1.neighbors=new LinkedList<Node>();
+		n2.neighbors=new LinkedList<Node>();
+		n3.neighbors=new LinkedList<Node>();
+		n4.neighbors=new LinkedList<Node>();
+		n1.neighbors.add(n3);
+		n1.neighbors.add(n2);
+		
+		n1.neighbors.add(n4);
+		n2.neighbors.add(n3);
+		n2.neighbors.add(n1);
+		n2.neighbors.add(n4);
+		n3.neighbors.add(n4);
+		n3.neighbors.add(n2);
+		n3.neighbors.add(n1);
+		n4.neighbors.add(n3);
+		n4.neighbors.add(n2);
+		n4.neighbors.add(n1);
+		
+		HashMap<Integer, Node> map=new HashMap<>();
+		map.put( 1,n1 );
+		map.put( 2,n2 );
+		map.put( 3,n3 );
+		
+		
+		System.out.println(n1.neighbors.contains(n2));
+		
+		Queue<Node> list=new LinkedList<>();
+		list.offer(n1);
+		list.offer(n2);
+		list.offer(n3);
+		list.offer(n4);
+		
+		System.out.println(list.peek().val);
+		
+		
+		Node N=new Node();
+		N=cloneGraph(n1);
+		
+			
+	}
+
+}

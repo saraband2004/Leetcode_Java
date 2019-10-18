@@ -1,0 +1,116 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	public static List<List<String>> partition(String s) {
+        List<List<String>> results = new ArrayList<>();
+        if (s == null || s.length() == 0) {
+            return results;
+        }
+        
+        List<String> partition = new ArrayList<String>();
+        helper(s, 0, partition, results);
+        
+        return results;
+    }
+    
+    private static void helper(String s,
+                        int startIndex,
+                        List<String> partition,
+                        List<List<String>> results) {
+        if (startIndex == s.length()) {
+            results.add(new ArrayList<String>(partition));
+            return;
+        }
+        
+        for (int i = startIndex; i < s.length(); i++) {
+            String subString = s.substring(startIndex, i + 1);
+            if (!isPalindrome(subString)) {
+                continue;
+            }
+            partition.add(subString);
+            helper(s, i + 1, partition, results);
+            partition.remove(partition.size() - 1);
+        }
+    }
+    
+    private static boolean  isPalindrome(String s) {
+        for (int i = 0, j = s.length() - 1; i < j; i++, j--) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean palin(String s){
+        int i=0;
+        int j=s.length()-1;
+        
+        while(i<=j){
+            if (s.charAt(i)!=s.charAt(j)){return false;}
+            i++;
+            j--;
+        }
+        
+        return true;
+    }
+    public static List<List<String>> partition2(String s) {
+        
+        //List<String> temp=new ArrayList<>();
+        //char [] c= s.toCharArray();
+        HashMap<String, List<List<String>>> map=new HashMap<>();
+        
+        for (int i=1; i<=s.length(); i++){
+            PART(s.substring(0,i), map);
+        }
+        
+        return map.get(s);
+        
+    }
+    public static void PART(String s, HashMap<String, List<List<String>>> map){
+        List<List<String>> result=new ArrayList<>();
+        List<List<String>> prev;
+        List<String> list;
+        
+        if (palin (s)){
+            list=new ArrayList<>();
+            list.add(s);
+            result.add(list);}
+        
+        for (int i=1; i<s.length(); i++){
+            if (palin(s.substring(i))) {
+                if (map.containsKey(s.substring(0,i))){
+                    prev=map.get(s.substring(0,i));
+                    for (List<String> prevlist :prev){
+                        list=new ArrayList<>(prevlist);
+                        list.add(s.substring(i));
+                        result.add(list);
+                        
+                    }
+                    
+                }
+                
+                
+            }
+            
+            
+        }
+        
+        
+        
+        
+        map.put(s,result);
+        
+    }
+    
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s="aaaaaaaaaaabaaaaaaaaaaaaa";
+		System.out.println(partition2(s).size());
+		System.out.println(partition(s).size());
+		
+	}
+
+}

@@ -1,0 +1,68 @@
+//585. Maximum Number in Mountain Sequence
+
+
+public class Solution {
+	
+	public int mountainSequence(int[] nums) {
+	    // write your code here
+		int left=0;
+		int right=nums.length-1;
+		int mid;
+		int midleft;
+		int midright;
+	
+		
+		while(left+10<right) {
+			mid=left +(-left+right)/2;
+			midleft=mid+(-mid+left)/2;
+			midright=mid+(-mid+right)/2;
+			
+			
+			if (nums[left] < nums[midleft] && nums[midright] > nums[right]) {
+				left = midleft;
+				right = midright;
+				
+			}
+			else if (nums[mid] > nums[midright] && nums[midright] > nums[right]) {
+				left = mid;
+				
+			}
+			else {
+				right = mid;
+			}
+			
+			
+		}
+			
+		int max=nums[left];
+		while(left <= right) {
+			if (nums[left]>max) {
+				max=nums[left];
+			}
+			left++;
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		return max;
+	}
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			
+			
+			int[]nums= {
+					-10,-9,-8,-7
+			};
+			Solution solution=new Solution();
+			System.out.print(solution.mountainSequence(nums));
+			
+	}
+
+}

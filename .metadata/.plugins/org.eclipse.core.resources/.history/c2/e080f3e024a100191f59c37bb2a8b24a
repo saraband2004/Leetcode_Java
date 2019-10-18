@@ -1,0 +1,45 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	public static int x;
+	public static void blankmatrix (boolean [][] x) {
+		int i=0;
+		int j=0;
+		while(i< x.length) {
+			j=0;
+			while(j<x[0].length) {
+				x[i][j]=false;
+				j++;
+			}
+			i++;
+		}
+	}
+	public static List<List<String>> solveNQueens(int n) {
+        // write your code here
+		List<List<String>> result=new ArrayList<>();
+		
+		boolean [][] status=new boolean[n][n]; blankmatrix(status);
+		boolean [][] queenposition=new boolean[n][n]; blankmatrix(status);
+		
+		int resultcount=0;
+		int queennumber=0;
+		int firstposition=0;
+		int secondposition=0;
+		
+		//x=5;	//System.out.println(x);
+		
+		
+		return result;
+    }
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		solveNQueens(3);
+	}
+
+}

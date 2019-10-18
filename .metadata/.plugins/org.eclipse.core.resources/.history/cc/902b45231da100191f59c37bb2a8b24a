@@ -1,0 +1,30 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	public static List<List<String>> solveNQueens(int n) {
+        // write your code here
+		boolean [][] status=new boolean[n][n];
+		boolean [][] queenposition=new boolean[n][n];
+		List<List<String>> result=new ArrayList<>();
+		Integer resultcount=0;
+		
+		
+		
+		
+		
+		
+		return result;
+    }
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		solveNQueens(3);
+	}
+
+}

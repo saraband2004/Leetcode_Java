@@ -1,0 +1,158 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	public static List<String> neighbors(String s){ 
+		List<String> result=new ArrayList<>();
+		int index=0;
+		char a;
+		String newstring=new String();
+		while(index < s.length()) {
+			a='a';
+			while(a<='z') {
+				for (int i=0; i< s.length(); i++) {
+					if (i != index) {
+						newstring = newstring +  s.charAt(i);
+					}
+					else {
+						newstring= newstring+a;
+					}
+				}
+				result.add(new String(newstring));
+				a++;
+				newstring="";
+			}
+			index++;
+		}
+		
+		
+		return result;
+	}
+	
+	public static List<List<String>> findLadders(String start, String end, Set<String> dict) {
+        // write your code here
+		dict.add(start);
+		dict.add(end);
+		List<List<String>> result=new ArrayList<>();
+		if (start == null || start.length() == 0) {return result;}
+		
+		Queue<String> queue=new LinkedList<>();
+		List<List<String>> record=new ArrayList<>();
+		HashSet<String> visited=new HashSet<>();
+		
+		queue.offer(end);
+		visited.add(end);
+		int size;
+		String s;
+		List<String> recordtemp;
+		boolean sign=false;
+		
+		while( !queue.isEmpty() ) {
+			size = queue.size();
+			recordtemp=new ArrayList<String>();
+			for ( int i=0 ; i < size ; i++ ) {
+				s=queue.poll();
+				recordtemp.add(s);
+				if (s.compareTo(start) ==0 ) {
+					sign=true; 
+					break;
+					}
+				for (String t: neighbors(s)) {
+					if ( (!visited.contains(t)) && dict.contains(t) ) {
+						queue.offer(t);
+						visited.add(t);
+					}
+				}
+			}
+			record.add(recordtemp);
+			if (sign) {
+				break;}
+		}
+		int position=record.size()-2;
+		List<String> path=new ArrayList<>();
+		path.add(start);
+		if (sign) {generateresult(position, start, end, record ,result, path);}
+		return result;	
+    }
+	public static void generateresult(int position, String start, String end, List<List<String>> record, List<List<String>> result, List<String> path) {
+		if (position == -1) {
+			if (path.get(path.size()-1).compareTo(end)==0) {
+				result.add(new ArrayList<String>(path));
+				return;
+			}
+			else {return;}
+			
+		}
+		
+		List<String> liststring=record.get(position);
+		
+		
+		
+		for (String s: liststring) {
+			if (judgeneighbor(s, path.get(path.size()-1))) {
+				path.add(s);
+				
+				generateresult(position-1, start, end, record ,result, path);
+				
+				path.remove(path.size()-1);
+			}
+		}
+	}
+	
+	public static boolean judgeneighbor(String s, String t) {
+		int count=0;
+		if (s.length()!= t.length()) {return false;}
+		int i=0;
+		while(i < s.length()) {
+			if (s.charAt(i) != t.charAt(i)) {
+				count++;
+				
+			}
+			
+			i++;
+		}
+		if (count == 1) {return true;}
+		return false;
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print(true);
+		HashSet<String> dict=new HashSet<>();
+		
+		Collections.addAll(dict, 
+	   			"si","go","se","cm","so","ph","mt","db","mb","sb","kr","ln","tm","le","av","sm","ar","ci","ca","br","ti","ba","to","ra","fa","yo","ow","sn","ya","cr","po","fe","ho","ma","re","or","rn","au","ur","rh","sr","tc","lt","lo","as","fr","nb","yb","if","pb","ge","th","pm","rb","sh","co","ga","li","ha","hz","no","bi","di","hi","qa","pi","os","uh","wm","an","me","mo","na","la","st","er","sc","ne","mn","mi","am","ex","pt","io","be","fm","ta","tb","ni","mr","pa","he","lr","sq","ye"
+	   			);
+		
+		List<List<String>> listlist= findLadders("qa", "sq", dict);
+	
+		
+		
+		
+		
+		
+		
+//		dict.add("a");dict.add("b");dict.add("c");
+//		
+//		List<List<String>> listlist= findLadders("a", "c", dict);
+		
+		for (String t: listlist.get(0)) {
+			System.out.println(t);
+		}
+		
+		
+		
+		System.out.println(judgeneighbor("a", "c"));
+		
+		
+		Integer[]x= {1,2};
+		
+		
+	//	for (String t: neighbors("aaaa")) {
+		//	System.out.println(t); 		}
+	}
+
+}

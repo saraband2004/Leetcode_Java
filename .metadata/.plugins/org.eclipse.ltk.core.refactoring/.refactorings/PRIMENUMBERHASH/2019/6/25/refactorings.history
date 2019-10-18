@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;HELLO_WORLD_MAIN&apos; to &apos;MYMAIN&apos;&#x0D;&#x0A;- Original project: &apos;PRIMENUMBERHASH&apos;&#x0D;&#x0A;- Original element: &apos;HELLO_WORLD_MAIN&apos;&#x0D;&#x0A;- Renamed element: &apos;MYMAIN&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;HELLO_WORLD_MAIN&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{HELLO_WORLD_MAIN.java[HELLO_WORLD_MAIN" matchStrategy="1" name="MYMAIN" qualified="false" references="true" similarDeclarations="false" stamp="1560794057798" textual="false" version="1.0"/>
+</session>

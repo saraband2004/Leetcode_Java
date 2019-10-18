@@ -1,0 +1,45 @@
+
+class TreeNode {
+     public int val;
+     public TreeNode left, right;
+     public TreeNode(int val) {
+         this.val = val;
+         this.left = this.right = null;
+     }
+}
+
+class Minimum{
+	public int minval;
+}
+
+
+
+
+public class Solution {
+	public static TreeNode findSubtree(TreeNode root) {
+        // write your code here
+		Minimum MIN=new Minimum();
+		MIN.minval=0;
+		
+		return 0;
+		
+    }
+	
+	
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			System.out.print("xxx");
+			TreeNode root = new TreeNode(3);
+			TreeNode l1 = new TreeNode(1);
+			TreeNode l2 = new TreeNode(3);
+			root.left=l1;
+			root.right=l2;
+			findSubtree(root);
+	}
+
+}

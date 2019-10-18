@@ -1,0 +1,40 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	
+	public List<List<String>> splitString(String s) {
+        // write your code here
+		List<List<String>> result=new ArrayList<>();
+		List<String> temp=new ArrayList<>();
+		splitStringII(s,0,temp,result);
+		return result;
+    }
+	public void splitStringII(String s, int index, List<String> temp, List<List<String>> result) {
+		String newstring = new String();
+		newstring=newstring+s.charAt(index);
+		
+		
+		
+	}
+	
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print(true);
+		String s=new String();
+		char u='u';
+		s+=u;
+		System.out.print(s);
+		
+		
+		
+		
+	}
+
+}

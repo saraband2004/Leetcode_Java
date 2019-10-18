@@ -1,0 +1,78 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+    public int NDNA(char x){
+        if (x=='A')return 0;
+        if (x=='C')return 1;
+        if (x=='T')return 2;
+        if (x=='G')return 3;
+        
+        return (1<<31)-1;
+    }
+    
+    public List<String> findRepeatedDnaSequences(String s) {
+        List<String> result=new ArrayList<>();
+        HashSet<Integer> single=new HashSet<>();
+        HashSet<Integer> set=new HashSet<>();
+        if (s.length()<=10){return result;}
+        
+        
+        
+        char[]c=s.toCharArray();
+        int start=0;
+        int end=10;
+        
+        int hashvalue=0;
+        for (int i=0; i<10; i++){
+            
+            hashvalue=(hashvalue<<2)+NDNA(c[i]);
+            
+        }
+        single.add(hashvalue);
+        //String temp;
+        
+        start++;
+        end++;
+        
+        while (end<=c.length){
+        	System.out.println(hashvalue);
+            hashvalue<<=14;
+            System.out.println(hashvalue);
+            hashvalue>>>=14;
+            System.out.println(hashvalue);
+            hashvalue+=NDNA(c[end-1]);
+            
+            
+            if (single.contains(hashvalue)){
+                single.remove(hashvalue);
+                set.add(hashvalue);
+                result.add(new String(c,start,10));
+            }else if (set.contains(hashvalue)){}
+            else {
+                single.add(hashvalue);
+            }
+            
+            
+            start++;
+            end++;
+            System.out.println(start);
+        }
+        return result;
+        
+    }	
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.print("aaa");
+		Solution s=new Solution();
+		String str="GGGGGGGGGGGGGGGGGGGGGGGG";
+		System.out.println(s.findRepeatedDnaSequences(str));
+		
+	}
+
+}

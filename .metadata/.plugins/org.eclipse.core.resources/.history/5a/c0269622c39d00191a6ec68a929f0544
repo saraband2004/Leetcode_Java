@@ -1,0 +1,36 @@
+import java.io.*; 
+import java.util.*; 
+import java.lang.*;
+
+
+public class Solution {
+	
+	public List<List<Integer>> kSumII(int[] A, int k, int target) {
+        // write your code here
+		List<List<Integer>> result=new ArrayList<>();
+		List<Integer> temp=new ArrayList<>();
+	 
+	}
+	
+	public void kSumII(int index, int[] A, int k, int target, List<Integer> temp, List<List<Integer>> result) {
+        // write your code here
+		if (target == 0) {
+			result.add(new ArrayList<Integer>(temp));
+		}
+
+		
+		
+	 
+	}
+	
+	
+	
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.print(true);
+	}
+
+}
