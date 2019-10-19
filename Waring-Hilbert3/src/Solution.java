@@ -61,7 +61,7 @@ public class Solution {
 		int temp =0;
 		int example = 1;
 		
-		for (int i=1; i<4000; i++) {
+		for (int i=1; i<40000; i++) {
 			if (new Solution().numCubes(i)!=new Solution().numCubes2(i)) {System.out.println("error");}
 		}
 		
