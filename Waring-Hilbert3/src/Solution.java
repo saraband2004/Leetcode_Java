@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.*; 
 import java.lang.*;
 
-
 public class Solution {
 	
     public int numCubes(int n) {
@@ -55,13 +54,13 @@ public class Solution {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//System.out.print("aaa");
+		System.out.print("aaa");
 		Solution S=new Solution();
 		int max=0;
 		int temp =0;
 		int example = 1;
 		
-		for (int i=1; i<40000; i++) {
+		for (int i=1; i<400; i++) {
 			if (new Solution().numCubes(i)!=new Solution().numCubes2(i)) {System.out.println("error");}
 		}
 		
