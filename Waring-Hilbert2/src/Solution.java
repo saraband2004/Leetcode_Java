@@ -60,11 +60,11 @@ public class Solution {
 		int max=0;
 		int temp = 60;
 		System.out.println(temp+": "+S.numSquares(temp));
-//		for (int i=5000; i<6000; i++) {
-//			System.out.println(i+" HELLO "+S.numSquares(i));
-//		}
-//		
-		//System.out.println("max: "+max);
+		for (int i=1; i<600; i++) {
+			System.out.println(i+" HELLO "+S.numSquares(i));
+		}
+		
+		System.out.println("max: "+max);
 
 	}
 
